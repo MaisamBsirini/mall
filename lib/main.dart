@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mall/demo/ui_showcase_screen.dart';
+import 'package:mall/modules/home/views/store_products_view.dart';
 
-import 'modules/home/views/explorer_view.dart';
-import 'modules/home/views/home_view.dart';
-
-import 'modules/home/bindings/floor_binding.dart';
-import 'modules/home/bindings/explorer_binding.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,19 +14,16 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
 
-      initialRoute: "/home",
+      initialRoute: "/showcase",
 
       getPages: [
         GetPage(
-          name: "/home",
-          page: () => HomeView(),
-          binding: FloorBinding(),
+          name: "/showcase",
+          page: () => const UiShowcaseScreen(),
         ),
-
         GetPage(
-          name: "/explorer",
-          page: () => ExplorerView(),
-          binding: ExplorerBinding(),
+          name: "/products",
+          page: () => const StoreProductsView(),
         ),
       ],
     );
