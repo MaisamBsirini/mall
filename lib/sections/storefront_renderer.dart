@@ -13,6 +13,8 @@ import 'collections/renderer.dart';
 import 'merchant_storefront_config.dart';
 import 'social/renderer.dart';
 import 'social/social_section_config.dart';
+import 'staff/renderer.dart';
+import 'staff/staff_section_config.dart';
 import 'storefront_section_entry.dart';
 
 class StorefrontRenderer extends StatelessWidget {
@@ -105,6 +107,16 @@ class _SectionHost extends StatelessWidget {
       case 'booking':
         return BookingRenderer(
           config: BookingSectionConfig(
+            id: entry.id,
+            name: entry.name,
+            enabled: entry.enabled,
+            order: entry.order,
+            style: entry.style,
+          ),
+        );
+      case 'staff':
+        return StaffRenderer(
+          config: StaffSectionConfig(
             id: entry.id,
             name: entry.name,
             enabled: entry.enabled,

@@ -5,6 +5,7 @@ import 'categories/categories_registry.dart';
 import 'certifications/certifications_registry.dart';
 import 'collections/collections_registry.dart';
 import 'social/social_registry.dart';
+import 'staff/staff_registry.dart';
 
 /// Aggregates every registered storefront section.
 ///
@@ -20,6 +21,7 @@ class SectionsCatalog {
     SocialSectionRegistry.registry,
     CertificationsSectionRegistry.registry,
     BookingSectionRegistry.registry,
+    StaffSectionRegistry.registry,
   ];
 
   static SectionRegistry? findById(String id) {
