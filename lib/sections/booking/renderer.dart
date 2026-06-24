@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 import '../../design_system/scope/design_system_scope.dart';
 import 'booking_section_config.dart';
 import 'styles.dart';
-import 'styles/calendar_first.dart';
-import 'styles/clock_picker.dart';
-import 'styles/quick_slots.dart';
-import 'styles/step_booking.dart';
-import 'styles/timeline_booking.dart';
+import 'styles/compact_chip_flow.dart';
+import 'styles/scroll_wizard_flow.dart';
+import 'styles/split_schedule_flow.dart';
+import 'styles/stacked_step_cards.dart';
+import 'styles/timeline_rail_flow.dart';
 
+/// Routes booking section styles to TEMPORARY UX prototype widgets.
+///
+/// These prototypes are disposable and not connected to backend logic.
 class BookingRenderer extends StatelessWidget {
   final BookingSectionConfig config;
 
@@ -36,16 +39,16 @@ class BookingRenderer extends StatelessWidget {
     }
 
     switch (config.style) {
-      case BookingStyleId.calendarFirst:
-        return const CalendarFirstStyle();
-      case BookingStyleId.timelineBooking:
-        return const TimelineBookingStyle();
-      case BookingStyleId.quickSlots:
-        return const QuickSlotsStyle();
-      case BookingStyleId.stepBooking:
-        return const StepBookingStyle();
-      case BookingStyleId.clockPicker:
-        return const ClockPickerStyle();
+      case BookingStyleId.stackedStepCards:
+        return const StackedStepCardsStyle();
+      case BookingStyleId.compactChipFlow:
+        return const CompactChipFlowStyle();
+      case BookingStyleId.timelineRailFlow:
+        return const TimelineRailFlowStyle();
+      case BookingStyleId.splitScheduleFlow:
+        return const SplitScheduleFlowStyle();
+      case BookingStyleId.scrollWizardFlow:
+        return const ScrollWizardFlowStyle();
       default:
         return const _UnknownBookingStyle();
     }

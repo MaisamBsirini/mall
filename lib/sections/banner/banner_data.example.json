@@ -1,0 +1,29 @@
+{
+  "id": "banner",
+  "name": "Banner",
+  "enabled": true,
+  "order": 1,
+  "style": "slider_banner",
+  "data": {
+    "autoplay": true,
+    "autoplay_interval_ms": 5000,
+    "items": [
+      {
+        "id": "bnr_01",
+        "image_url": "https://cdn.example.com/banners/summer.jpg",
+        "title": "Summer Collection",
+        "subtitle": "New arrivals up to 30% off",
+        "cta_text": "Shop Now",
+        "sort_order": 1
+      },
+      {
+        "id": "bnr_02",
+        "image_url": "https://cdn.example.com/banners/wellness.jpg",
+        "title": "Wellness Week",
+        "subtitle": "Book your consultation today",
+        "cta_text": "Learn More",
+        "sort_order": 2
+      }
+    ]
+  }
+}

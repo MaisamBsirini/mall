@@ -1,0 +1,16 @@
+{
+  "title": "Book an Appointment",
+  "booking_enabled": true,
+  "cta_label": "Confirm Booking",
+  "timezone": "America/Chicago",
+  "booking_target": {
+    "type": "internal",
+    "module_id": "booking_main"
+  },
+  "service_ids": ["svc_12", "svc_15"],
+  "staff_ids": ["staff_2", "staff_5"],
+  "availability_preview": {
+    "next_available": "2026-06-12T10:30:00Z",
+    "slots_today": 6
+  }
+}

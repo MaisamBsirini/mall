@@ -46,8 +46,7 @@ class DesignSystemScope extends InheritedWidget {
   bool updateShouldNotify(DesignSystemScope oldWidget) {
     return designSystem.palette.id != oldWidget.designSystem.palette.id ||
         designSystem.typographyProfile.id !=
-            oldWidget.designSystem.typographyProfile.id ||
-        designSystem.theme.id != oldWidget.designSystem.theme.id;
+            oldWidget.designSystem.typographyProfile.id;
   }
 }
 

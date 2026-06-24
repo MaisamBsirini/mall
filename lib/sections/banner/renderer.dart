@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../design_system/scope/design_system_scope.dart';
+import 'banner_section_config.dart';
 import 'styles.dart';
 import 'styles/glass_banner.dart';
 import 'styles/hero_banner.dart';
@@ -9,16 +10,32 @@ import 'styles/modern_banner.dart';
 import 'styles/slider_banner.dart';
 
 class BannerRenderer extends StatelessWidget {
-  final String styleId;
+  final BannerSectionConfig config;
 
   const BannerRenderer({
     super.key,
-    required this.styleId,
+    required this.config,
   });
+
+  BannerRenderer.fromStyleId({
+    super.key,
+    required String styleId,
+    bool enabled = true,
+  }) : config = BannerSectionConfig(
+          id: 'banner',
+          name: 'Banner',
+          enabled: enabled,
+          order: 0,
+          style: styleId,
+        );
 
   @override
   Widget build(BuildContext context) {
-    switch (styleId) {
+    if (!config.enabled) {
+      return const SizedBox.shrink();
+    }
+
+    switch (config.style) {
       case BannerStyleId.hero:
         return const HeroBanner();
       case BannerStyleId.slider:

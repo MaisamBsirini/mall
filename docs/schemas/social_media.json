@@ -1,0 +1,17 @@
+{
+  "title": "Follow Us",
+  "items": [
+    {
+      "platform": "instagram",
+      "profile_url": "https://instagram.com/store"
+    },
+    {
+      "platform": "tiktok",
+      "profile_url": "https://tiktok.com/@store"
+    },
+    {
+      "platform": "facebook",
+      "profile_url": "https://facebook.com/store"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "id": "media_1",
+      "type": "image",
+      "url": "https://cdn.example.com/products/hero.jpg",
+      "sort_order": 1
+    },
+    {
+      "id": "media_2",
+      "type": "image",
+      "url": "https://cdn.example.com/products/detail-2.jpg",
+      "sort_order": 2
+    },
+    {
+      "id": "media_3",
+      "type": "video",
+      "url": "https://cdn.example.com/products/demo.mp4",
+      "sort_order": 3
+    }
+  ]
+}

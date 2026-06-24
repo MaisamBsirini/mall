@@ -17,12 +17,8 @@ abstract final class CertificationsSectionRegistry {
   );
 
   static Widget _buildStyle(String styleId) => CertificationsRenderer(
-        config: CertificationsSectionConfig(
-          id: sectionId,
-          name: sectionName,
-          enabled: true,
-          order: 0,
-          style: styleId,
+        config: CertificationsSectionConfig.fromJson(
+          sectionStyleEnvelope(CertificationsSectionConfig.exampleJson, styleId),
         ),
       );
 }

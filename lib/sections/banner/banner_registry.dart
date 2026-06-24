@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../section_registry.dart';
+import 'banner_section_config.dart';
 import 'renderer.dart';
 import 'styles.dart';
 
@@ -15,6 +16,9 @@ abstract final class BannerSectionRegistry {
     buildStyle: _buildStyle,
   );
 
-  static Widget _buildStyle(String styleId) =>
-      BannerRenderer(styleId: styleId);
+  static Widget _buildStyle(String styleId) => BannerRenderer(
+        config: BannerSectionConfig.fromJson(
+          sectionStyleEnvelope(BannerSectionConfig.exampleJson, styleId),
+        ),
+      );
 }

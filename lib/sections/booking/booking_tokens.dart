@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../core/constants/app_sizes.dart';
 import '../../design_system/scope/design_system_scope.dart';
 
+/// TEMPORARY PROTOTYPE tokens — disposable booking UX exploration only.
+
 class MockSpecialist {
   final String key;
   final Color accentHint;
@@ -197,7 +199,7 @@ class BookingTokens {
         border: Border.all(
           color: selected
               ? specialist.accentHint
-              : specialist.accentHint.withOpacity(0.25),
+              : specialist.accentHint.withValues(alpha: 0.25),
           width: selected ? 2.5 : 1,
         ),
         boxShadow: selected ? elevatedShadow(context) : null,

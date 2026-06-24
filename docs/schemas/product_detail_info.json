@@ -1,0 +1,10 @@
+{
+  "title": "Hydrating Renewal Serum",
+  "category": "Skincare",
+  "description": "A lightweight daily serum formulated for deep hydration and visible radiance.",
+  "price": {
+    "amount": 49.99,
+    "currency": "USD",
+    "formatted": "$49.99"
+  }
+}

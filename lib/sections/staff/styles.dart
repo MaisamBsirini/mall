@@ -1,14 +1,14 @@
 class StaffStyleId {
   StaffStyleId._();
 
-  static const String alternatingProfileList = 'alternating_profile_list';
-  static const String expertCardsGrid = 'expert_cards_grid';
-  static const String featuredSpecialists = 'featured_specialists';
+  static const String alternatingStaff = 'alternating_staff';
+  static const String teamDirectory = 'team_directory';
+  static const String premiumSpecialistsGrid = 'premium_specialists_grid';
 
   static const List<String> all = [
-    alternatingProfileList,
-    expertCardsGrid,
-    featuredSpecialists,
+    alternatingStaff,
+    teamDirectory,
+    premiumSpecialistsGrid,
   ];
 
   static bool isValid(String styleId) => all.contains(styleId);

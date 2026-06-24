@@ -1,0 +1,40 @@
+{
+  "attribute_groups": [
+    {
+      "id": "group_volume",
+      "label": "Volume",
+      "options": [
+        {
+          "id": "opt_50ml",
+          "label": "50ml",
+          "available": true
+        },
+        {
+          "id": "opt_100ml",
+          "label": "100ml",
+          "available": true
+        }
+      ]
+    },
+    {
+      "id": "group_pack",
+      "label": "Pack",
+      "options": [
+        {
+          "id": "opt_single",
+          "label": "Single",
+          "available": true
+        },
+        {
+          "id": "opt_duo",
+          "label": "Duo",
+          "available": false
+        }
+      ]
+    }
+  ],
+  "default_selections": {
+    "group_volume": "opt_50ml",
+    "group_pack": "opt_single"
+  }
+}

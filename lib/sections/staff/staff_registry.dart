@@ -17,12 +17,8 @@ abstract final class StaffSectionRegistry {
   );
 
   static Widget _buildStyle(String styleId) => StaffRenderer(
-        config: StaffSectionConfig(
-          id: sectionId,
-          name: sectionName,
-          enabled: true,
-          order: 0,
-          style: styleId,
+        config: StaffSectionConfig.fromJson(
+          sectionStyleEnvelope(StaffSectionConfig.exampleJson, styleId),
         ),
       );
 }

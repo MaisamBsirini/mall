@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_sizes.dart';
-import '../../../design_system/scope/design_system_scope.dart';
 import '../collections_tokens.dart';
 
 class RectangleCardsCollections extends StatelessWidget {
@@ -9,63 +8,63 @@ class RectangleCardsCollections extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cardWidth = AppSizes.w(context, 0.42);
-    final imageHeight = AppSizes.h(context, 0.14);
+    final cardWidth = AppSizes.w(context, 0.34);
+    final imageHeight = AppSizes.h(context, 0.095);
+    final rowHeight = imageHeight + AppSizes.h(context, 0.048);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CollectionsTokens.sectionHeader(context),
-        SizedBox(height: CollectionsTokens.gapMd(context)),
+        CollectionsTokens.compactHeader(context),
+        SizedBox(height: CollectionsTokens.gapSm(context)),
         SizedBox(
-          height: imageHeight + AppSizes.h(context, 0.075),
+          height: rowHeight,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             padding: CollectionsTokens.sectionPadding(context),
             itemCount: CollectionsTokens.itemCount,
             separatorBuilder: (_, __) =>
-                SizedBox(width: CollectionsTokens.gapMd(context)),
+                SizedBox(width: CollectionsTokens.gapSm(context)),
             itemBuilder: (context, index) {
-              return Container(
+              return SizedBox(
                 width: cardWidth,
-                decoration: BoxDecoration(
-                  color: CollectionsTokens.surface(context),
-                  borderRadius: CollectionsTokens.borderMd(context),
-                  boxShadow: CollectionsTokens.cardShadow(context),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CollectionsTokens.imagePlaceholder(
-                      context,
-                      width: cardWidth,
-                      height: imageHeight,
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(
-                          context.ds.tokens.radiusMd,
+                child: CollectionsTokens.cardShell(
+                  context,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CollectionsTokens.imagePlaceholder(
+                        context,
+                        width: cardWidth,
+                        height: imageHeight,
+                        borderRadius: BorderRadius.zero,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(
+                          AppSizes.w(context, 0.028),
+                          AppSizes.h(context, 0.008),
+                          AppSizes.w(context, 0.028),
+                          AppSizes.h(context, 0.010),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CollectionsTokens.textLine(
+                              context,
+                              widthFactor: 0.32,
+                              heightFactor: 0.006,
+                            ),
+                            SizedBox(height: CollectionsTokens.gapXs(context)),
+                            CollectionsTokens.textLine(
+                              context,
+                              widthFactor: 0.20,
+                              heightFactor: 0.005,
+                            ),
+                          ],
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(AppSizes.w(context, 0.035)),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CollectionsTokens.textLine(
-                            context,
-                            widthFactor: 0.30,
-                            heightFactor: 0.009,
-                          ),
-                          SizedBox(height: CollectionsTokens.gapXs(context)),
-                          CollectionsTokens.textLine(
-                            context,
-                            widthFactor: 0.18,
-                            heightFactor: 0.007,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },

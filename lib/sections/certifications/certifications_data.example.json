@@ -1,0 +1,26 @@
+{
+  "id": "certifications",
+  "style": "certificate_wall",
+  "data": {
+    "title": "Our Certifications",
+    "items": [
+      {
+        "id": "cert_1",
+        "title": "Licensed Esthetician",
+        "images": [
+          "certificate_1.jpg",
+          "certificate_2.jpg",
+          "certificate_3.jpg"
+        ]
+      },
+      {
+        "id": "cert_2",
+        "title": "Advanced Skincare Award",
+        "images": [
+          "award_1.jpg",
+          "award_2.jpg"
+        ]
+      }
+    ]
+  }
+}

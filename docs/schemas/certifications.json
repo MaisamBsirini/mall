@@ -1,0 +1,20 @@
+{
+  "title": "Our Certifications",
+  "items": [
+    {
+      "id": "cert_1",
+      "title": "Licensed Esthetician",
+      "images": [
+        "https://cdn.example.com/certs/certificate_1.jpg",
+        "https://cdn.example.com/certs/certificate_2.jpg"
+      ]
+    },
+    {
+      "id": "cert_2",
+      "title": "Advanced Skincare Award",
+      "images": [
+        "https://cdn.example.com/certs/award_1.jpg"
+      ]
+    }
+  ]
+}

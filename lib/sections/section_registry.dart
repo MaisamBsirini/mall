@@ -6,34 +6,37 @@ typedef SectionStyleBuilder = Widget Function(String styleId);
 /// Describes a storefront section and its registered styles.
 ///
 /// Each section folder exposes one [SectionRegistry] instance.
-/// Style lists are sourced from the section's `*StyleId.all` registry —
-/// adding a style there makes it appear in the showcase automatically.
+/// Style lists are sourced from the section's `*StyleId.all` registry.
 class SectionRegistry {
   final String id;
   final String name;
   final List<String> styles;
   final SectionStyleBuilder buildStyle;
 
+  /// When set, returns false to skip rendering a style with no content.
+  final bool Function(String styleId)? hasRenderableContent;
+
   const SectionRegistry({
     required this.id,
     required this.name,
     required this.styles,
     required this.buildStyle,
+    this.hasRenderableContent,
   });
 
-  /// Display title used in the design playground, e.g. "Banner Styles".
-  String get showcaseTitle => '$name Styles';
+  /// First registered style — used when [styleId] is unknown.
+  String get defaultStyleId => styles.isNotEmpty ? styles.first : '';
 
   int get styleCount => styles.length;
 }
 
-/// Formats a snake_case style id into a readable label.
-String formatSectionStyleName(String styleId) {
-  return styleId
-      .split('_')
-      .map(
-        (word) =>
-            word.isEmpty ? word : '${word[0].toUpperCase()}${word.substring(1)}',
-      )
-      .join(' ');
+/// Merges a section's [exampleJson] envelope with a [styleId].
+Map<String, dynamic> sectionStyleEnvelope(
+  Map<String, dynamic> exampleJson,
+  String styleId,
+) {
+  return {
+    ...exampleJson,
+    'style': styleId,
+  };
 }

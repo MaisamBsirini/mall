@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mall/demo/ui_showcase_screen.dart';
 import 'package:mall/modules/home/views/store_products_view.dart';
-
 
 void main() {
   runApp(MyApp());
@@ -13,16 +11,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-
-      initialRoute: "/showcase",
-
+      initialRoute: '/products',
       getPages: [
         GetPage(
-          name: "/showcase",
-          page: () => const UiShowcaseScreen(),
-        ),
-        GetPage(
-          name: "/products",
+          name: '/products',
           page: () => const StoreProductsView(),
         ),
       ],

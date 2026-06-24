@@ -17,12 +17,8 @@ abstract final class CategoriesSectionRegistry {
   );
 
   static Widget _buildStyle(String styleId) => CategoriesRenderer(
-        config: CategoriesSectionConfig(
-          id: sectionId,
-          name: sectionName,
-          enabled: true,
-          order: 0,
-          style: styleId,
+        config: CategoriesSectionConfig.fromJson(
+          sectionStyleEnvelope(CategoriesSectionConfig.exampleJson, styleId),
         ),
       );
 }

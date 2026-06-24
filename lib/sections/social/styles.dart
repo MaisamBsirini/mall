@@ -1,18 +1,18 @@
 class SocialStyleId {
   SocialStyleId._();
 
-  static const String socialHub = 'social_hub';
-  static const String socialWall = 'social_wall';
-  static const String socialCarousel = 'social_carousel';
-  static const String glassSocialPanel = 'glass_social_panel';
-  static const String creatorShowcase = 'creator_showcase';
+  static const String minimalSocialChips = 'minimal_social_chips';
+  static const String floatingIconGrid = 'floating_icon_grid';
+  static const String compactProfileStrip = 'compact_profile_strip';
+  static const String elegantCardStack = 'elegant_card_stack';
+  static const String bottomSocialDock = 'bottom_social_dock';
 
   static const List<String> all = [
-    socialHub,
-    socialWall,
-    socialCarousel,
-    glassSocialPanel,
-    creatorShowcase,
+    minimalSocialChips,
+    floatingIconGrid,
+    compactProfileStrip,
+    elegantCardStack,
+    bottomSocialDock,
   ];
 
   static bool isValid(String styleId) => all.contains(styleId);

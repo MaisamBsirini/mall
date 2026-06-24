@@ -17,12 +17,8 @@ abstract final class CollectionsSectionRegistry {
   );
 
   static Widget _buildStyle(String styleId) => CollectionsRenderer(
-        config: CollectionsSectionConfig(
-          id: sectionId,
-          name: sectionName,
-          enabled: true,
-          order: 0,
-          style: styleId,
+        config: CollectionsSectionConfig.fromJson(
+          sectionStyleEnvelope(CollectionsSectionConfig.exampleJson, styleId),
         ),
       );
 }

@@ -1,0 +1,22 @@
+{
+  "design": {
+    "palette": "luxury_dark",
+    "typography": "elegant_serif"
+  },
+  "sections": [
+    {
+      "id": "banner",
+      "name": "Banner",
+      "enabled": true,
+      "order": 1,
+      "style": "hero_banner"
+    },
+    {
+      "id": "collections",
+      "name": "Collections",
+      "enabled": true,
+      "order": 2,
+      "style": "horizontal_circles"
+    }
+  ]
+}

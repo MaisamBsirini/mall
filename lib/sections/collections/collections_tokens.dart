@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../core/constants/app_sizes.dart';
 import '../../design_system/scope/design_system_scope.dart';
 
 class CollectionsTokens {
@@ -41,8 +40,13 @@ class CollectionsTokens {
   static List<BoxShadow> cardShadow(BuildContext context) =>
       context.ds.tokens.cardShadow(context);
 
-  static List<BoxShadow> elevatedShadow(BuildContext context) =>
-      context.ds.tokens.elevatedShadow(context);
+  static List<BoxShadow> subtleShadow(BuildContext context) => [
+        BoxShadow(
+          color: context.ds.palette.overlayDark.withValues(alpha: 0.04),
+          blurRadius: 8,
+          offset: const Offset(0, 2),
+        ),
+      ];
 
   static Widget shimmerBox(
     BuildContext context, {
@@ -62,7 +66,7 @@ class CollectionsTokens {
   static Widget textLine(
     BuildContext context, {
     double widthFactor = 0.28,
-    double heightFactor = 0.008,
+    double heightFactor = 0.006,
   }) {
     return context.ds.placeholders.textLine(
       context,
@@ -71,8 +75,22 @@ class CollectionsTokens {
     );
   }
 
-  static Widget sectionHeader(BuildContext context) {
-    return context.ds.placeholders.sectionHeader(context);
+  static Widget compactHeader(BuildContext context) {
+    return Padding(
+      padding: sectionPadding(context),
+      child: Row(
+        children: [
+          Expanded(
+            child: textLine(
+              context,
+              widthFactor: 0.30,
+              heightFactor: 0.008,
+            ),
+          ),
+          textLine(context, widthFactor: 0.12, heightFactor: 0.007),
+        ],
+      ),
+    );
   }
 
   static Widget imagePlaceholder(
@@ -87,6 +105,28 @@ class CollectionsTokens {
       height: height,
       borderRadius: borderRadius,
       shape: shape,
+    );
+  }
+
+  static Widget cardShell(
+    BuildContext context, {
+    required Widget child,
+    BorderRadius? borderRadius,
+    bool elevated = false,
+  }) {
+    final palette = context.ds.palette;
+
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: surface(context),
+        borderRadius: borderRadius ?? borderMd(context),
+        border: Border.all(color: palette.border.withValues(alpha: 0.6)),
+        boxShadow: elevated ? cardShadow(context) : subtleShadow(context),
+      ),
+      child: ClipRRect(
+        borderRadius: borderRadius ?? borderMd(context),
+        child: child,
+      ),
     );
   }
 }

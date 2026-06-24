@@ -1,0 +1,35 @@
+{
+  "id": "offers",
+  "name": "Offers",
+  "enabled": true,
+  "order": 1,
+  "style": "compact_horizontal_offer",
+  "data": {
+    "items": [
+      {
+        "id": "offer_1",
+        "product_name": "Hydrating Serum",
+        "image": "product.jpg",
+        "discount_percentage": 40
+      },
+      {
+        "id": "offer_2",
+        "product_name": "Luxury Face Cream",
+        "image": "product_2.jpg",
+        "discount_percentage": 25
+      },
+      {
+        "id": "offer_3",
+        "product_name": "Vitamin C Kit",
+        "image": "product_3.jpg",
+        "discount_percentage": 55
+      },
+      {
+        "id": "offer_4",
+        "product_name": "Night Repair",
+        "image": "product_4.jpg",
+        "discount_percentage": 30
+      }
+    ]
+  }
+}

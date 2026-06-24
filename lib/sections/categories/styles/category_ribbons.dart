@@ -4,79 +4,57 @@ import '../../../core/constants/app_sizes.dart';
 import '../../../design_system/scope/design_system_scope.dart';
 import '../categories_tokens.dart';
 
+/// Segmented card rows — grouped blocks with clear section dividers.
 class CategoryRibbonsStyle extends StatelessWidget {
   const CategoryRibbonsStyle({super.key});
 
-  static const List<double> _offsets = [0.0, 0.06, 0.12, 0.04, 0.10];
+  static const _segments = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7],
+  ];
 
   @override
   Widget build(BuildContext context) {
     final palette = context.ds.palette;
-    const ribbonCount = 5;
+    final cellHeight = AppSizes.h(context, 0.065);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: CategoriesTokens.sectionPadding(context),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CategoriesTokens.titleLine(context, widthFactor: 0.30),
-              SizedBox(height: CategoriesTokens.gapXs(context)),
-              CategoriesTokens.textLine(
-                context,
-                widthFactor: 0.20,
-                heightFactor: 0.006,
-              ),
-            ],
-          ),
-        ),
-        SizedBox(height: CategoriesTokens.gapMd(context)),
-        Padding(
-          padding: CategoriesTokens.sectionPadding(context),
-          child: Column(
-            children: List.generate(ribbonCount, (index) {
-              final slot = CategoriesTokens.categories[index];
-              final isTop = index == 0;
-
-              return Padding(
-                padding: EdgeInsets.only(
-                  left: AppSizes.w(context, _offsets[index]),
-                  bottom: index < ribbonCount - 1
-                      ? CategoriesTokens.gapSm(context)
-                      : 0,
-                ),
-                child: _CategoryRibbon(
-                  slot: slot,
-                  index: index,
-                  featured: isTop,
-                ),
-              );
-            }),
-          ),
-        ),
+        CategoriesTokens.compactHeader(context),
         SizedBox(height: CategoriesTokens.gapSm(context)),
         Padding(
           padding: CategoriesTokens.sectionPadding(context),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+          child: Column(
             children: [
-              Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: AppSizes.w(context, 0.04),
-                  vertical: AppSizes.h(context, 0.008),
+              for (var s = 0; s < _segments.length; s++) ...[
+                if (s > 0) ...[
+                  SizedBox(height: CategoriesTokens.gapSm(context)),
+                  Divider(
+                    height: 1,
+                    color: palette.border.withValues(alpha: 0.5),
+                  ),
+                  SizedBox(height: CategoriesTokens.gapSm(context)),
+                ],
+                Row(
+                  children: [
+                    for (var i = 0; i < _segments[s].length; i++) ...[
+                      if (i > 0)
+                        SizedBox(width: CategoriesTokens.gapSm(context)),
+                      Expanded(
+                        child: _SegmentCell(
+                          slot: CategoriesTokens.categories[_segments[s][i]],
+                          height: cellHeight,
+                        ),
+                      ),
+                    ],
+                    if (_segments[s].length < 3)
+                      for (var p = 0; p < 3 - _segments[s].length; p++)
+                        Expanded(child: SizedBox()),
+                  ],
                 ),
-                decoration: BoxDecoration(
-                  border: Border.all(color: palette.border),
-                  borderRadius: CategoriesTokens.borderSm(context),
-                ),
-                child: CategoriesTokens.textLine(
-                  context,
-                  widthFactor: 0.14,
-                  heightFactor: 0.006,
-                ),
-              ),
+              ],
             ],
           ),
         ),
@@ -85,109 +63,43 @@ class CategoryRibbonsStyle extends StatelessWidget {
   }
 }
 
-class _CategoryRibbon extends StatelessWidget {
+class _SegmentCell extends StatelessWidget {
   final CategorySlot slot;
-  final int index;
-  final bool featured;
+  final double height;
 
-  const _CategoryRibbon({
-    required this.slot,
-    required this.index,
-    this.featured = false,
-  });
+  const _SegmentCell({required this.slot, required this.height});
 
   @override
   Widget build(BuildContext context) {
     final palette = context.ds.palette;
-    final height = featured
-        ? AppSizes.h(context, 0.075)
-        : AppSizes.h(context, 0.062);
 
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        if (!featured)
-          Positioned(
-            left: 4,
-            top: 4,
-            right: -4,
-            child: Container(
-              height: height,
-              decoration: BoxDecoration(
-                color: palette.placeholderLight,
-                borderRadius: CategoriesTokens.borderMd(context),
-              ),
+    return Container(
+      height: height,
+      padding: EdgeInsets.symmetric(
+        horizontal: AppSizes.w(context, 0.022),
+      ),
+      decoration: BoxDecoration(
+        color: palette.surface,
+        borderRadius: CategoriesTokens.borderSm(context),
+        border: Border.all(color: palette.border.withValues(alpha: 0.65)),
+      ),
+      child: Row(
+        children: [
+          CategoriesTokens.iconBadge(
+            context,
+            slot: slot,
+            size: height * 0.62,
+          ),
+          SizedBox(width: CategoriesTokens.gapXs(context)),
+          Expanded(
+            child: CategoriesTokens.optionalNameLabel(
+              context,
+              slot: slot,
+              widthFactor: 0.14,
             ),
           ),
-        Container(
-          height: height,
-          decoration: BoxDecoration(
-            color: CategoriesTokens.surface(context),
-            borderRadius: CategoriesTokens.borderMd(context),
-            border: Border.all(
-              color: featured
-                  ? slot.accentHint.withOpacity(0.35)
-                  : palette.border,
-              width: featured ? 1.5 : 1,
-            ),
-            boxShadow: featured
-                ? CategoriesTokens.elevatedShadow(context)
-                : CategoriesTokens.cardShadow(context),
-          ),
-          child: Row(
-            children: [
-              Container(
-                width: 4,
-                decoration: BoxDecoration(
-                  color: slot.accentHint.withOpacity(featured ? 0.70 : 0.40),
-                  borderRadius: BorderRadius.horizontal(
-                    left: Radius.circular(context.ds.tokens.radiusMd),
-                  ),
-                ),
-              ),
-              SizedBox(width: CategoriesTokens.gapMd(context)),
-              CategoriesTokens.iconPlaceholder(
-                context,
-                size: AppSizes.w(context, featured ? 0.10 : 0.085),
-                slot: slot,
-                shape: CategoryIconShape.rounded,
-                filled: featured,
-              ),
-              SizedBox(width: CategoriesTokens.gapMd(context)),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CategoriesTokens.titleLine(
-                      context,
-                      widthFactor: featured ? 0.26 : 0.20,
-                    ),
-                    SizedBox(height: CategoriesTokens.gapXs(context)),
-                    CategoriesTokens.textLine(
-                      context,
-                      widthFactor: featured ? 0.16 : 0.12,
-                      heightFactor: 0.005,
-                    ),
-                  ],
-                ),
-              ),
-              CategoriesTokens.itemCountBadge(
-                context,
-                widthFactor: 0.10,
-                compact: !featured,
-              ),
-              SizedBox(width: CategoriesTokens.gapMd(context)),
-              Icon(
-                Icons.chevron_right_rounded,
-                size: AppSizes.w(context, 0.05),
-                color: palette.textSecondary.withOpacity(0.45),
-              ),
-              SizedBox(width: CategoriesTokens.gapSm(context)),
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

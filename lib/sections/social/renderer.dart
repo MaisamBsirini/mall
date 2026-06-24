@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../../design_system/scope/design_system_scope.dart';
 import 'social_section_config.dart';
 import 'styles.dart';
-import 'styles/creator_showcase.dart';
-import 'styles/glass_social_panel.dart';
-import 'styles/social_carousel.dart';
-import 'styles/social_hub.dart';
-import 'styles/social_wall.dart';
+import 'styles/bottom_social_dock.dart';
+import 'styles/compact_profile_strip.dart';
+import 'styles/elegant_card_stack.dart';
+import 'styles/floating_icon_grid.dart';
+import 'styles/minimal_social_chips.dart';
 
 class SocialRenderer extends StatelessWidget {
   final SocialSectionConfig config;
@@ -22,8 +22,8 @@ class SocialRenderer extends StatelessWidget {
     required String styleId,
     bool enabled = true,
   }) : config = SocialSectionConfig(
-          id: 'social',
-          name: 'Social',
+          id: 'social_media',
+          name: 'Social Media',
           enabled: enabled,
           order: 0,
           style: styleId,
@@ -35,17 +35,19 @@ class SocialRenderer extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
+    final data = config.data;
+
     switch (config.style) {
-      case SocialStyleId.socialHub:
-        return const SocialHubStyle();
-      case SocialStyleId.socialWall:
-        return const SocialWallStyle();
-      case SocialStyleId.socialCarousel:
-        return const SocialCarouselStyle();
-      case SocialStyleId.glassSocialPanel:
-        return const GlassSocialPanelStyle();
-      case SocialStyleId.creatorShowcase:
-        return const CreatorShowcaseStyle();
+      case SocialStyleId.minimalSocialChips:
+        return MinimalSocialChipsStyle(data: data);
+      case SocialStyleId.floatingIconGrid:
+        return FloatingIconGridStyle(data: data);
+      case SocialStyleId.compactProfileStrip:
+        return CompactProfileStripStyle(data: data);
+      case SocialStyleId.elegantCardStack:
+        return ElegantCardStackStyle(data: data);
+      case SocialStyleId.bottomSocialDock:
+        return BottomSocialDockStyle(data: data);
       default:
         return const _UnknownSocialStyle();
     }

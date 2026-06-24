@@ -1,0 +1,18 @@
+{
+  "title": "Our Team",
+  "items": [
+    {
+      "id": "staff_1",
+      "full_name": "Dr. Amira Hassan",
+      "role": "Dermatology Specialist",
+      "profile_image_url": "https://cdn.example.com/staff/amira.jpg",
+      "short_bio": "10+ years experience."
+    },
+    {
+      "id": "staff_2",
+      "full_name": "Dr. James Chen",
+      "role": "Aesthetic Medicine",
+      "profile_image_url": "https://cdn.example.com/staff/james.jpg"
+    }
+  ]
+}

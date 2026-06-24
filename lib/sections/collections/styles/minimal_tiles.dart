@@ -12,33 +12,16 @@ class MinimalTilesCollections extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tileSize = AppSizes.w(context, 0.26);
-    final spacing = AppSizes.w(context, 0.035);
-    final gridHeight = (tileSize * _rows) + (spacing * (_rows - 1));
-    final palette = context.ds.palette;
+    final spacing = CollectionsTokens.gapSm(context);
+    final tileWidth =
+        (AppSizes.w(context, 0.92) - spacing * (_columns - 1)) / _columns;
+    final gridHeight = (tileWidth * 0.82 * _rows) + (spacing * (_rows - 1));
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: CollectionsTokens.sectionPadding(context),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              CollectionsTokens.textLine(
-                context,
-                widthFactor: 0.26,
-                heightFactor: 0.009,
-              ),
-              Container(
-                width: AppSizes.w(context, 0.06),
-                height: AppSizes.h(context, 0.003),
-                color: palette.accentSoft(0.4),
-              ),
-            ],
-          ),
-        ),
-        SizedBox(height: CollectionsTokens.gapMd(context)),
+        CollectionsTokens.compactHeader(context),
+        SizedBox(height: CollectionsTokens.gapSm(context)),
         Padding(
           padding: CollectionsTokens.sectionPadding(context),
           child: SizedBox(
@@ -49,12 +32,10 @@ class MinimalTilesCollections extends StatelessWidget {
                 crossAxisCount: _columns,
                 mainAxisSpacing: spacing,
                 crossAxisSpacing: spacing,
-                childAspectRatio: 1,
+                childAspectRatio: 1.22,
               ),
               itemCount: _columns * _rows,
-              itemBuilder: (context, index) {
-                return _MinimalTile(size: tileSize);
-              },
+              itemBuilder: (context, index) => _CompactTile(index: index),
             ),
           ),
         ),
@@ -63,45 +44,44 @@ class MinimalTilesCollections extends StatelessWidget {
   }
 }
 
-class _MinimalTile extends StatelessWidget {
-  final double size;
+class _CompactTile extends StatelessWidget {
+  final int index;
 
-  const _MinimalTile({required this.size});
+  const _CompactTile({required this.index});
 
   @override
   Widget build(BuildContext context) {
     final palette = context.ds.palette;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: palette.placeholderLight,
-        borderRadius: CollectionsTokens.borderSm(context),
-        border: Border.all(color: palette.border),
-      ),
+    return CollectionsTokens.cardShell(
+      context,
+      borderRadius: CollectionsTokens.borderSm(context),
       child: Padding(
-        padding: EdgeInsets.all(AppSizes.w(context, 0.025)),
+        padding: EdgeInsets.all(AppSizes.w(context, 0.022)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CollectionsTokens.shimmerBox(
-              context,
-              width: size * 0.45,
-              height: size * 0.45,
-              borderRadius: BorderRadius.circular(6),
-            ),
-            const Spacer(),
-            CollectionsTokens.textLine(
-              context,
-              widthFactor: 0.18,
-              heightFactor: 0.006,
+            Expanded(
+              child: CollectionsTokens.imagePlaceholder(
+                context,
+                width: double.infinity,
+                height: double.infinity,
+                borderRadius: CollectionsTokens.borderSm(context),
+              ),
             ),
             SizedBox(height: CollectionsTokens.gapXs(context)),
+            CollectionsTokens.textLine(
+              context,
+              widthFactor: 0.16,
+              heightFactor: 0.005,
+            ),
+            SizedBox(height: 2),
             Container(
-              width: AppSizes.w(context, 0.10),
-              height: AppSizes.h(context, 0.003),
+              width: AppSizes.w(context, 0.08),
+              height: 2,
               decoration: BoxDecoration(
-                color: palette.primarySoft(0.25),
-                borderRadius: BorderRadius.circular(2),
+                color: palette.primarySoft(index == 0 ? 0.4 : 0.2),
+                borderRadius: BorderRadius.circular(1),
               ),
             ),
           ],

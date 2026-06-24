@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "id": "offer_1",
+      "product_name": "Hydrating Serum",
+      "image": "https://cdn.example.com/products/serum.jpg",
+      "discount_percentage": 40
+    },
+    {
+      "id": "offer_2",
+      "product_name": "Luxury Face Cream",
+      "image": "https://cdn.example.com/products/cream.jpg",
+      "discount_percentage": 25
+    }
+  ]
+}
