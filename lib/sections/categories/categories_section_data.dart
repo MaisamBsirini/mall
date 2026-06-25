@@ -1,6 +1,6 @@
 import 'category_item.dart';
 
-/// Merchant-provided categories content (navigation-focused).
+/// Categories content from the dedicated categories content API — not storefront customization.
 class CategoriesSectionData {
   final List<CategoryItem> items;
 

@@ -1,0 +1,34 @@
+{
+  "palette": "luxury_dark",
+  "typography": "elegant_serif",
+  "sections": [
+    {
+      "id": "media",
+      "name": "Media",
+      "enabled": true,
+      "order": 1,
+      "style": "hero_full_width"
+    },
+    {
+      "id": "info",
+      "name": "Product Information",
+      "enabled": true,
+      "order": 2,
+      "style": "large_title_stack"
+    },
+    {
+      "id": "variants",
+      "name": "Variants",
+      "enabled": true,
+      "order": 3,
+      "style": "adaptive_chips"
+    },
+    {
+      "id": "reviews",
+      "name": "Reviews",
+      "enabled": true,
+      "order": 4,
+      "style": "rating_summary"
+    }
+  ]
+}

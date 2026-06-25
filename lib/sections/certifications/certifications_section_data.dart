@@ -1,6 +1,6 @@
 import 'certification_item.dart';
 
-/// Merchant-provided certifications content — image galleries first.
+/// Certifications content from the dedicated certifications content API — not storefront customization.
 class CertificationsSectionData {
   final String? title;
   final List<CertificationItem> items;

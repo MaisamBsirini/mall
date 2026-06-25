@@ -1,8 +1,6 @@
 {
-  "design": {
-    "palette": "luxury_dark",
-    "typography": "elegant_serif"
-  },
+  "palette": "luxury_dark",
+  "typography": "elegant_serif",
   "sections": [
     {
       "id": "banner",

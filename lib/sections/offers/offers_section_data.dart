@@ -1,6 +1,6 @@
 import 'offer_item.dart';
 
-/// Merchant-provided offers content.
+/// Offers content from the dedicated offers content API — not storefront customization.
 class OffersSectionData {
   final List<OfferItem> items;
 

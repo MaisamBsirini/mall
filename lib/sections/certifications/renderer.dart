@@ -35,19 +35,17 @@ class CertificationsRenderer extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    final data = config.data;
-
     switch (config.style) {
       case CertificationsStyleId.certificateWall:
-        return CertificateWallStyle(data: data);
+        return const CertificateWallStyle();
       case CertificationsStyleId.achievementGallery:
-        return AchievementGalleryStyle(data: data);
+        return const AchievementGalleryStyle();
       case CertificationsStyleId.awardsShowcase:
-        return AwardsShowcaseStyle(data: data);
+        return const AwardsShowcaseStyle();
       case CertificationsStyleId.masonryAchievements:
-        return MasonryAchievementsStyle(data: data);
+        return const MasonryAchievementsStyle();
       case CertificationsStyleId.premiumCarousel:
-        return PremiumCarouselStyle(data: data);
+        return const PremiumCarouselStyle();
       default:
         return const _UnknownCertificationsStyle();
     }

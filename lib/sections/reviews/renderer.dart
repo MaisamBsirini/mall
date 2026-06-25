@@ -35,19 +35,17 @@ class ReviewsRenderer extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    final data = config.data;
-
     switch (config.style) {
       case ReviewsStyleId.reviewDashboard:
-        return ReviewDashboardStyle(data: data);
+        return const ReviewDashboardStyle();
       case ReviewsStyleId.floatingRatingHeader:
-        return FloatingRatingHeaderStyle(data: data);
+        return const FloatingRatingHeaderStyle();
       case ReviewsStyleId.featuredRatingHero:
-        return FeaturedRatingHeroStyle(data: data);
+        return const FeaturedRatingHeroStyle();
       case ReviewsStyleId.ratingSidebar:
-        return RatingSidebarStyle(data: data);
+        return const RatingSidebarStyle();
       case ReviewsStyleId.editorialTimelineReviews:
-        return EditorialTimelineReviewsStyle(data: data);
+        return const EditorialTimelineReviewsStyle();
       default:
         return const _UnknownReviewsStyle();
     }

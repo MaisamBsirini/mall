@@ -8,9 +8,9 @@ import 'offers/offers_registry.dart';
 import 'reviews/reviews_registry.dart';
 import 'social/social_registry.dart';
 import 'staff/staff_registry.dart';
-import 'storefront_layout_config.dart';
+import 'storefront_section_entry.dart';
 
-/// Default storefront layout presets for local configuration bootstrap.
+/// Default storefront layout presets — customize configuration only.
 abstract final class StorefrontLayoutPresets {
   static const fullStore = 'preset_full_store';
   static const minimal = 'preset_minimal';
@@ -18,25 +18,22 @@ abstract final class StorefrontLayoutPresets {
 
   static const all = [fullStore, minimal, commerce];
 
-  static List<StorefrontLayoutSectionEntry> sectionsFor(String presetId) {
+  static List<StorefrontSectionEntry> sectionsFor(String presetId) {
     return switch (presetId) {
-      minimal => const [
-          StorefrontLayoutSectionEntry(
-            sectionId: BannerSectionRegistry.sectionId,
-            styleId: 'hero_banner',
-            enabled: true,
+      minimal => [
+          StorefrontSectionEntry.layout(
+            id: BannerSectionRegistry.sectionId,
+            style: 'hero_banner',
             order: 1,
           ),
-          StorefrontLayoutSectionEntry(
-            sectionId: CollectionsSectionRegistry.sectionId,
-            styleId: 'horizontal_circles',
-            enabled: true,
+          StorefrontSectionEntry.layout(
+            id: CollectionsSectionRegistry.sectionId,
+            style: 'horizontal_circles',
             order: 2,
           ),
-          StorefrontLayoutSectionEntry(
-            sectionId: SocialSectionRegistry.sectionId,
-            styleId: 'minimal_social_chips',
-            enabled: true,
+          StorefrontSectionEntry.layout(
+            id: SocialSectionRegistry.sectionId,
+            style: 'minimal_social_chips',
             order: 3,
           ),
         ],
@@ -47,72 +44,62 @@ abstract final class StorefrontLayoutPresets {
               CategoriesSectionRegistry.sectionId,
               OffersSectionRegistry.sectionId,
               CollectionsSectionRegistry.sectionId,
-            ].contains(s.sectionId),
+            ].contains(s.id),
           ),
         ],
       _ => _fullSections,
     };
   }
 
-  static const _fullSections = [
-    StorefrontLayoutSectionEntry(
-      sectionId: BannerSectionRegistry.sectionId,
-      styleId: 'hero_banner',
-      enabled: true,
+  static final _fullSections = [
+    StorefrontSectionEntry.layout(
+      id: BannerSectionRegistry.sectionId,
+      style: 'hero_banner',
       order: 1,
     ),
-    StorefrontLayoutSectionEntry(
-      sectionId: CollectionsSectionRegistry.sectionId,
-      styleId: 'horizontal_circles',
-      enabled: true,
+    StorefrontSectionEntry.layout(
+      id: CollectionsSectionRegistry.sectionId,
+      style: 'horizontal_circles',
       order: 2,
     ),
-    StorefrontLayoutSectionEntry(
-      sectionId: CategoriesSectionRegistry.sectionId,
-      styleId: 'icon_hub',
-      enabled: true,
+    StorefrontSectionEntry.layout(
+      id: CategoriesSectionRegistry.sectionId,
+      style: 'icon_hub',
       order: 3,
     ),
-    StorefrontLayoutSectionEntry(
-      sectionId: OffersSectionRegistry.sectionId,
-      styleId: 'compact_horizontal_offer',
-      enabled: true,
+    StorefrontSectionEntry.layout(
+      id: OffersSectionRegistry.sectionId,
+      style: 'compact_horizontal_offer',
       order: 4,
     ),
-    StorefrontLayoutSectionEntry(
-      sectionId: BookingSectionRegistry.sectionId,
-      styleId: 'stacked_step_cards',
-      enabled: true,
+    StorefrontSectionEntry.layout(
+      id: BookingSectionRegistry.sectionId,
+      style: 'stacked_step_cards',
       order: 5,
     ),
-    StorefrontLayoutSectionEntry(
-      sectionId: StaffSectionRegistry.sectionId,
-      styleId: 'alternating_staff',
-      enabled: true,
+    StorefrontSectionEntry.layout(
+      id: StaffSectionRegistry.sectionId,
+      style: 'alternating_staff',
       order: 6,
     ),
-    StorefrontLayoutSectionEntry(
-      sectionId: ReviewsSectionRegistry.sectionId,
-      styleId: 'review_dashboard',
-      enabled: true,
+    StorefrontSectionEntry.layout(
+      id: ReviewsSectionRegistry.sectionId,
+      style: 'review_dashboard',
       order: 7,
     ),
-    StorefrontLayoutSectionEntry(
-      sectionId: CertificationsSectionRegistry.sectionId,
-      styleId: 'certificate_wall',
-      enabled: true,
+    StorefrontSectionEntry.layout(
+      id: CertificationsSectionRegistry.sectionId,
+      style: 'certificate_wall',
       order: 8,
     ),
-    StorefrontLayoutSectionEntry(
-      sectionId: SocialSectionRegistry.sectionId,
-      styleId: 'minimal_social_chips',
-      enabled: true,
+    StorefrontSectionEntry.layout(
+      id: SocialSectionRegistry.sectionId,
+      style: 'minimal_social_chips',
       order: 9,
     ),
-    StorefrontLayoutSectionEntry(
-      sectionId: LocationSectionRegistry.sectionId,
-      styleId: 'corner_location_badge',
-      enabled: true,
+    StorefrontSectionEntry.layout(
+      id: LocationSectionRegistry.sectionId,
+      style: 'corner_location_badge',
       order: 10,
     ),
   ];

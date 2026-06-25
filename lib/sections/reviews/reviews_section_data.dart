@@ -1,6 +1,6 @@
 import 'review_item.dart';
 
-/// Merchant-provided reviews content — internal platform reviews only.
+/// Reviews content from the dedicated reviews content API — not storefront customization.
 class ReviewsSectionData {
   final String? title;
   final double averageRating;

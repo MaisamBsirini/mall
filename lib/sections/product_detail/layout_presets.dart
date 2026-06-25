@@ -44,158 +44,158 @@ abstract final class ProductDetailLayoutPresets {
       example2 => _example2,
       example3 => _example3,
       example4 => _example4,
-      mediaInfo => const [
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.media,
-            styleId: MediaStyleId.heroFullWidth,
+      mediaInfo => [
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.media,
+            style: MediaStyleId.heroFullWidth,
             enabled: true,
             order: 1,
           ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.info,
-            styleId: InfoStyleId.largeTitleStack,
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.info,
+            style: InfoStyleId.largeTitleStack,
             enabled: true,
             order: 2,
           ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.variants,
-            styleId: VariantsStyleId.adaptiveChips,
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.variants,
+            style: VariantsStyleId.adaptiveChips,
             enabled: false,
             order: 3,
           ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.reviews,
-            styleId: ReviewsStyleId.ratingSummary,
-            enabled: false,
-            order: 4,
-          ),
-        ],
-      infoVariants => const [
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.info,
-            styleId: InfoStyleId.compactHeader,
-            enabled: true,
-            order: 1,
-          ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.variants,
-            styleId: VariantsStyleId.adaptiveChips,
-            enabled: true,
-            order: 2,
-          ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.media,
-            styleId: MediaStyleId.heroFullWidth,
-            enabled: false,
-            order: 3,
-          ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.reviews,
-            styleId: ReviewsStyleId.compactReviewsList,
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.reviews,
+            style: ReviewsStyleId.ratingSummary,
             enabled: false,
             order: 4,
           ),
         ],
-      stackedFull => const [
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.media,
-            styleId: MediaStyleId.imageCarousel,
+      infoVariants => [
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.info,
+            style: InfoStyleId.compactHeader,
             enabled: true,
             order: 1,
           ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.info,
-            styleId: InfoStyleId.largeTitleStack,
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.variants,
+            style: VariantsStyleId.adaptiveChips,
             enabled: true,
             order: 2,
           ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.variants,
-            styleId: VariantsStyleId.horizontalScroll,
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.media,
+            style: MediaStyleId.heroFullWidth,
+            enabled: false,
+            order: 3,
+          ),
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.reviews,
+            style: ReviewsStyleId.compactReviewsList,
+            enabled: false,
+            order: 4,
+          ),
+        ],
+      stackedFull => [
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.media,
+            style: MediaStyleId.imageCarousel,
+            enabled: true,
+            order: 1,
+          ),
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.info,
+            style: InfoStyleId.largeTitleStack,
+            enabled: true,
+            order: 2,
+          ),
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.variants,
+            style: VariantsStyleId.horizontalScroll,
             enabled: true,
             order: 3,
           ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.reviews,
-            styleId: ReviewsStyleId.featuredReviewCard,
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.reviews,
+            style: ReviewsStyleId.featuredReviewCard,
             enabled: true,
             order: 4,
           ),
         ],
-      variantsFirst => const [
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.variants,
-            styleId: VariantsStyleId.segmentedPills,
+      variantsFirst => [
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.variants,
+            style: VariantsStyleId.segmentedPills,
             enabled: true,
             order: 1,
           ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.media,
-            styleId: MediaStyleId.swipeGallery,
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.media,
+            style: MediaStyleId.swipeGallery,
             enabled: true,
             order: 2,
           ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.info,
-            styleId: InfoStyleId.editorialCard,
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.info,
+            style: InfoStyleId.editorialCard,
             enabled: true,
             order: 3,
           ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.reviews,
-            styleId: ReviewsStyleId.reviewTimeline,
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.reviews,
+            style: ReviewsStyleId.reviewTimeline,
             enabled: true,
             order: 4,
           ),
         ],
-      heroSheet => const [
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.media,
-            styleId: MediaStyleId.heroFullWidth,
+      heroSheet => [
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.media,
+            style: MediaStyleId.heroFullWidth,
             enabled: true,
             order: 1,
           ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.info,
-            styleId: InfoStyleId.compactHeader,
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.info,
+            style: InfoStyleId.compactHeader,
             enabled: true,
             order: 2,
           ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.variants,
-            styleId: VariantsStyleId.adaptiveChips,
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.variants,
+            style: VariantsStyleId.adaptiveChips,
             enabled: true,
             order: 3,
           ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.reviews,
-            styleId: ReviewsStyleId.minimalRatingStrip,
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.reviews,
+            style: ReviewsStyleId.minimalRatingStrip,
             enabled: true,
             order: 4,
           ),
         ],
-      splitComposition => const [
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.media,
-            styleId: MediaStyleId.swipeGallery,
+      splitComposition => [
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.media,
+            style: MediaStyleId.swipeGallery,
             enabled: true,
             order: 1,
           ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.info,
-            styleId: InfoStyleId.compactHeader,
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.info,
+            style: InfoStyleId.compactHeader,
             enabled: true,
             order: 2,
           ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.variants,
-            styleId: VariantsStyleId.horizontalScroll,
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.variants,
+            style: VariantsStyleId.horizontalScroll,
             enabled: true,
             order: 3,
           ),
-          ProductDetailSectionEntry(
-            sectionId: ProductDetailSectionId.reviews,
-            styleId: ReviewsStyleId.ratingSummary,
+          ProductDetailSectionEntry.layout(
+            id: ProductDetailSectionId.reviews,
+            style: ReviewsStyleId.ratingSummary,
             enabled: true,
             order: 4,
           ),
@@ -204,109 +204,109 @@ abstract final class ProductDetailLayoutPresets {
     };
   }
 
-  static const _example1 = [
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.media,
-      styleId: MediaStyleId.heroFullWidth,
+  static final _example1 = [
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.media,
+      style: MediaStyleId.heroFullWidth,
       enabled: true,
       order: 1,
     ),
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.info,
-      styleId: InfoStyleId.largeTitleStack,
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.info,
+      style: InfoStyleId.largeTitleStack,
       enabled: true,
       order: 2,
     ),
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.variants,
-      styleId: VariantsStyleId.adaptiveChips,
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.variants,
+      style: VariantsStyleId.adaptiveChips,
       enabled: true,
       order: 3,
     ),
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.reviews,
-      styleId: ReviewsStyleId.ratingSummary,
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.reviews,
+      style: ReviewsStyleId.ratingSummary,
       enabled: true,
       order: 4,
     ),
   ];
 
-  static const _example2 = [
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.info,
-      styleId: InfoStyleId.compactHeader,
+  static final _example2 = [
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.info,
+      style: InfoStyleId.compactHeader,
       enabled: true,
       order: 1,
     ),
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.media,
-      styleId: MediaStyleId.imageCarousel,
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.media,
+      style: MediaStyleId.imageCarousel,
       enabled: true,
       order: 2,
     ),
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.reviews,
-      styleId: ReviewsStyleId.compactReviewsList,
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.reviews,
+      style: ReviewsStyleId.compactReviewsList,
       enabled: true,
       order: 3,
     ),
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.variants,
-      styleId: VariantsStyleId.horizontalScroll,
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.variants,
+      style: VariantsStyleId.horizontalScroll,
       enabled: true,
       order: 4,
     ),
   ];
 
-  static const _example3 = [
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.variants,
-      styleId: VariantsStyleId.segmentedPills,
+  static final _example3 = [
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.variants,
+      style: VariantsStyleId.segmentedPills,
       enabled: true,
       order: 1,
     ),
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.info,
-      styleId: InfoStyleId.editorialCard,
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.info,
+      style: InfoStyleId.editorialCard,
       enabled: true,
       order: 2,
     ),
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.media,
-      styleId: MediaStyleId.swipeGallery,
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.media,
+      style: MediaStyleId.swipeGallery,
       enabled: true,
       order: 3,
     ),
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.reviews,
-      styleId: ReviewsStyleId.featuredReviewCard,
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.reviews,
+      style: ReviewsStyleId.featuredReviewCard,
       enabled: true,
       order: 4,
     ),
   ];
 
-  static const _example4 = [
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.reviews,
-      styleId: ReviewsStyleId.reviewTimeline,
+  static final _example4 = [
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.reviews,
+      style: ReviewsStyleId.reviewTimeline,
       enabled: true,
       order: 1,
     ),
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.media,
-      styleId: MediaStyleId.stackedGallery,
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.media,
+      style: MediaStyleId.stackedGallery,
       enabled: true,
       order: 2,
     ),
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.variants,
-      styleId: VariantsStyleId.cardSelector,
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.variants,
+      style: VariantsStyleId.cardSelector,
       enabled: true,
       order: 3,
     ),
-    ProductDetailSectionEntry(
-      sectionId: ProductDetailSectionId.info,
-      styleId: InfoStyleId.minimalCentered,
+    ProductDetailSectionEntry.layout(
+      id: ProductDetailSectionId.info,
+      style: InfoStyleId.minimalCentered,
       enabled: true,
       order: 4,
     ),
@@ -342,6 +342,6 @@ abstract final class ProductDetailLayoutPresets {
         .where((s) => s.enabled)
         .toList()
       ..sort((a, b) => a.order.compareTo(b.order));
-    return active.map((s) => s.sectionId).join(' → ');
+    return active.map((s) => s.id).join(' → ');
   }
 }

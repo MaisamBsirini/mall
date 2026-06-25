@@ -1,6 +1,6 @@
 import 'staff_item.dart';
 
-/// Merchant-provided staff content — team introductions only.
+/// Staff content from the dedicated staff content API — not storefront customization.
 class StaffSectionData {
   final String? title;
   final List<StaffItem> items;

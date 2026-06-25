@@ -33,15 +33,13 @@ class StaffRenderer extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    final data = config.data;
-
     switch (config.style) {
       case StaffStyleId.alternatingStaff:
-        return AlternatingStaffStyle(data: data);
+        return const AlternatingStaffStyle();
       case StaffStyleId.teamDirectory:
-        return TeamDirectoryStyle(data: data);
+        return const TeamDirectoryStyle();
       case StaffStyleId.premiumSpecialistsGrid:
-        return PremiumSpecialistsGridStyle(data: data);
+        return const PremiumSpecialistsGridStyle();
       default:
         return const _UnknownStaffStyle();
     }

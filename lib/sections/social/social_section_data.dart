@@ -1,6 +1,6 @@
 import 'social_item.dart';
 
-/// Merchant-provided social links — platform icons and profile URLs only.
+/// Social media content from the dedicated social content API — not storefront customization.
 class SocialSectionData {
   final String? title;
   final List<SocialItem> items;

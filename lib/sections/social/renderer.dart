@@ -35,19 +35,17 @@ class SocialRenderer extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    final data = config.data;
-
     switch (config.style) {
       case SocialStyleId.minimalSocialChips:
-        return MinimalSocialChipsStyle(data: data);
+        return const MinimalSocialChipsStyle();
       case SocialStyleId.floatingIconGrid:
-        return FloatingIconGridStyle(data: data);
+        return const FloatingIconGridStyle();
       case SocialStyleId.compactProfileStrip:
-        return CompactProfileStripStyle(data: data);
+        return const CompactProfileStripStyle();
       case SocialStyleId.elegantCardStack:
-        return ElegantCardStackStyle(data: data);
+        return const ElegantCardStackStyle();
       case SocialStyleId.bottomSocialDock:
-        return BottomSocialDockStyle(data: data);
+        return const BottomSocialDockStyle();
       default:
         return const _UnknownSocialStyle();
     }

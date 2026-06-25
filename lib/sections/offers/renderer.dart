@@ -35,19 +35,17 @@ class OffersRenderer extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    final data = config.data;
-
     switch (config.style) {
       case OffersStyleId.compactHorizontalOffer:
-        return CompactHorizontalOfferStyle(data: data);
+        return const CompactHorizontalOfferStyle();
       case OffersStyleId.denseOfferList:
-        return DenseOfferListStyle(data: data);
+        return const DenseOfferListStyle();
       case OffersStyleId.badgeBasedOffers:
-        return BadgeBasedOffersStyle(data: data);
+        return const BadgeBasedOffersStyle();
       case OffersStyleId.imageLeftStrip:
-        return ImageLeftStripStyle(data: data);
+        return const ImageLeftStripStyle();
       case OffersStyleId.minimalOfferGrid:
-        return MinimalOfferGridStyle(data: data);
+        return const MinimalOfferGridStyle();
       default:
         return const _UnknownOffersStyle();
     }

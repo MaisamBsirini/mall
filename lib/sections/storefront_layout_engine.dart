@@ -1,59 +1,52 @@
 import 'package:flutter/material.dart';
 
 import '../design_system/scope/design_system_scope.dart';
-import 'storefront_layout_config.dart';
+import 'storefront_section_entry.dart';
 import 'storefront_section_catalog.dart';
 
-/// Resolves and renders storefront sections dynamically.
+/// Resolves and renders storefront sections from customize configuration only.
 abstract final class StorefrontLayoutEngine {
-  /// Resolves the layout pipeline: filter → dedupe → validate → sort → pin banner.
-  static List<StorefrontLayoutSectionEntry> resolve(
-    List<StorefrontLayoutSectionEntry> sections,
+  /// filter enabled → skip unknown → dedupe → style fallback → sort → pin banner
+  static List<StorefrontSectionEntry> resolve(
+    List<StorefrontSectionEntry> sections,
   ) {
     final seen = <String>{};
-    final resolved = <StorefrontLayoutSectionEntry>[];
+    final resolved = <StorefrontSectionEntry>[];
 
     for (final entry in sections) {
       if (!entry.enabled) continue;
-      if (!StorefrontSectionCatalog.isKnown(entry.sectionId)) continue;
-      if (seen.contains(entry.sectionId)) continue;
+      if (!StorefrontSectionCatalog.isKnown(entry.id)) continue;
+      if (seen.contains(entry.id)) continue;
 
-      final styleId = StorefrontSectionCatalog.resolveStyleId(
-        entry.sectionId,
-        entry.styleId,
-      );
+      final style = StorefrontSectionCatalog.resolveStyleId(entry.id, entry.style);
 
-      if (!StorefrontSectionCatalog.hasRenderableContent(entry.sectionId, styleId)) {
-        continue;
-      }
-
-      seen.add(entry.sectionId);
-      resolved.add(entry.copyWith(styleId: styleId));
+      seen.add(entry.id);
+      resolved.add(entry.copyWith(style: style));
     }
 
     resolved.sort((a, b) => a.order.compareTo(b.order));
     return _pinBanner(resolved);
   }
 
-  static List<StorefrontLayoutSectionEntry> _pinBanner(
-    List<StorefrontLayoutSectionEntry> sections,
+  static List<StorefrontSectionEntry> _pinBanner(
+    List<StorefrontSectionEntry> sections,
   ) {
     final bannerIndex = sections.indexWhere(
-      (s) => s.sectionId == StorefrontSectionCatalog.bannerSectionId,
+      (s) => s.id == StorefrontSectionCatalog.bannerSectionId,
     );
 
     if (bannerIndex <= 0) return sections;
 
-    final result = List<StorefrontLayoutSectionEntry>.from(sections);
+    final result = List<StorefrontSectionEntry>.from(sections);
     final banner = result.removeAt(bannerIndex);
     result.insert(0, banner);
     return result;
   }
 }
 
-/// Scrollable storefront page driven entirely by section configuration.
+/// Scrollable storefront page driven by section customize entries.
 class StorefrontLayoutView extends StatelessWidget {
-  final List<StorefrontLayoutSectionEntry> sections;
+  final List<StorefrontSectionEntry> sections;
   final ScrollPhysics? physics;
   final EdgeInsets? padding;
 
@@ -91,8 +84,8 @@ class StorefrontLayoutView extends StatelessWidget {
       itemBuilder: (context, index) {
         final entry = resolved[index];
         final widget = StorefrontSectionCatalog.build(
-          sectionId: entry.sectionId,
-          styleId: entry.styleId,
+          sectionId: entry.id,
+          styleId: entry.style,
         );
 
         if (widget == null) return const SizedBox.shrink();

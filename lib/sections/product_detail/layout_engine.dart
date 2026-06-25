@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'config.dart';
 import 'section_catalog.dart';
 
-/// Dynamic layout engine — filter, dedupe, resolve styles, sort, render.
+/// Resolves product detail sections from customize configuration only.
 class ProductDetailLayoutEngine extends StatelessWidget {
   final List<ProductDetailSectionEntry> sections;
   final ScrollPhysics? physics;
@@ -20,7 +20,7 @@ class ProductDetailLayoutEngine extends StatelessWidget {
     this.physics,
   }) : sections = config.sections;
 
-  /// Resolves the layout pipeline: filter → skip unknown → dedupe → style fallback → sort.
+  /// filter enabled → skip unknown → dedupe → style fallback → sort
   static List<ProductDetailSectionEntry> resolve(
     List<ProductDetailSectionEntry> sections,
   ) {
@@ -29,16 +29,16 @@ class ProductDetailLayoutEngine extends StatelessWidget {
 
     for (final entry in sections) {
       if (!entry.enabled) continue;
-      if (!ProductDetailSectionCatalog.isKnown(entry.sectionId)) continue;
-      if (seen.contains(entry.sectionId)) continue;
+      if (!ProductDetailSectionCatalog.isKnown(entry.id)) continue;
+      if (seen.contains(entry.id)) continue;
 
-      final styleId = ProductDetailSectionCatalog.resolveStyleId(
-        entry.sectionId,
-        entry.styleId,
+      final style = ProductDetailSectionCatalog.resolveStyleId(
+        entry.id,
+        entry.style,
       );
 
-      seen.add(entry.sectionId);
-      resolved.add(entry.copyWith(styleId: styleId));
+      seen.add(entry.id);
+      resolved.add(entry.copyWith(style: style));
     }
 
     resolved.sort((a, b) => a.order.compareTo(b.order));
@@ -62,8 +62,8 @@ class ProductDetailLayoutEngine extends StatelessWidget {
         children: [
           for (final entry in active)
             ProductDetailSectionCatalog.render(
-              sectionId: entry.sectionId,
-              styleId: entry.styleId,
+              sectionId: entry.id,
+              styleId: entry.style,
             ),
         ],
       ),

@@ -1,0 +1,76 @@
+{
+  "palette": "luxury_dark",
+  "typography": "elegant_serif",
+  "sections": [
+    {
+      "id": "banner",
+      "name": "Banner",
+      "enabled": true,
+      "order": 1,
+      "style": "slider_banner"
+    },
+    {
+      "id": "booking",
+      "name": "Booking",
+      "enabled": true,
+      "order": 2,
+      "style": "stacked_step_cards"
+    },
+    {
+      "id": "staff",
+      "name": "Staff",
+      "enabled": true,
+      "order": 3,
+      "style": "team_directory"
+    },
+    {
+      "id": "collections",
+      "name": "Collections",
+      "enabled": true,
+      "order": 4,
+      "style": "rectangle_cards"
+    },
+    {
+      "id": "categories",
+      "name": "Categories",
+      "enabled": true,
+      "order": 5,
+      "style": "icon_hub"
+    },
+    {
+      "id": "offers",
+      "name": "Offers",
+      "enabled": true,
+      "order": 6,
+      "style": "compact_horizontal_offer"
+    },
+    {
+      "id": "reviews",
+      "name": "Reviews",
+      "enabled": true,
+      "order": 7,
+      "style": "review_dashboard"
+    },
+    {
+      "id": "location",
+      "name": "Location",
+      "enabled": true,
+      "order": 8,
+      "style": "header_location_chip"
+    },
+    {
+      "id": "social_media",
+      "name": "Social Media",
+      "enabled": true,
+      "order": 9,
+      "style": "minimal_social_chips"
+    },
+    {
+      "id": "certifications",
+      "name": "Certifications",
+      "enabled": true,
+      "order": 10,
+      "style": "certificate_wall"
+    }
+  ]
+}

@@ -24,12 +24,6 @@ abstract final class StorefrontSectionCatalog {
     return registry.styles.contains(styleId) ? styleId : registry.defaultStyleId;
   }
 
-  static bool hasRenderableContent(String sectionId, String styleId) {
-    final registry = find(sectionId);
-    if (registry == null) return false;
-    return registry.hasRenderableContent?.call(styleId) ?? true;
-  }
-
   static Widget? build({
     required String sectionId,
     required String styleId,
@@ -38,8 +32,6 @@ abstract final class StorefrontSectionCatalog {
     if (registry == null) return null;
 
     final resolvedStyleId = resolveStyleId(sectionId, styleId);
-    if (!hasRenderableContent(sectionId, resolvedStyleId)) return null;
-
     return registry.buildStyle(resolvedStyleId);
   }
 }

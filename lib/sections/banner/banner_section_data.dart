@@ -1,6 +1,6 @@
 import 'banner_item.dart';
 
-/// Merchant-provided banner content (visual layout only).
+/// Banner content from the dedicated banner content API — not storefront customization.
 ///
 /// Excluded by design:
 /// - Navigation / button actions (handled outside the customization system)

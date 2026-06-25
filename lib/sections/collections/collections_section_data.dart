@@ -1,6 +1,6 @@
 import 'collection_item.dart';
 
-/// Merchant-provided collections content.
+/// Collections content from the dedicated collections content API — not storefront customization.
 ///
 /// Excluded by design:
 /// - [icon] — image-based styles; visuals come from [CollectionItem.coverImage]
