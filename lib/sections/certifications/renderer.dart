@@ -4,9 +4,8 @@ import '../../design_system/scope/design_system_scope.dart';
 import 'certifications_section_config.dart';
 import 'styles.dart';
 import 'styles/achievement_gallery.dart';
-import 'styles/awards_showcase.dart';
 import 'styles/certificate_wall.dart';
-import 'styles/masonry_achievements.dart';
+import 'styles/credential_strip.dart';
 import 'styles/premium_carousel.dart';
 
 class CertificationsRenderer extends StatelessWidget {
@@ -40,12 +39,10 @@ class CertificationsRenderer extends StatelessWidget {
         return const CertificateWallStyle();
       case CertificationsStyleId.achievementGallery:
         return const AchievementGalleryStyle();
-      case CertificationsStyleId.awardsShowcase:
-        return const AwardsShowcaseStyle();
-      case CertificationsStyleId.masonryAchievements:
-        return const MasonryAchievementsStyle();
       case CertificationsStyleId.premiumCarousel:
         return const PremiumCarouselStyle();
+      case CertificationsStyleId.credentialStrip:
+        return const CredentialStripStyle();
       default:
         return const _UnknownCertificationsStyle();
     }

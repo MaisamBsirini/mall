@@ -1,6 +1,6 @@
 import 'info/styles.dart';
 import 'media/styles.dart';
-import 'reviews/styles.dart';
+import '../reviews/styles.dart';
 import 'variants/styles.dart';
 
 /// Human-readable labels for product detail style previews.
@@ -30,11 +30,11 @@ abstract final class ProductDetailStyleDescriptions {
   };
 
   static const reviews = {
-    ReviewsStyleId.ratingSummary: 'Star rating with distribution summary',
-    ReviewsStyleId.compactReviewsList: 'Compact stacked review cards',
-    ReviewsStyleId.featuredReviewCard: 'Single featured review highlight',
-    ReviewsStyleId.reviewTimeline: 'Editorial timeline with review nodes',
-    ReviewsStyleId.minimalRatingStrip: 'Minimal tappable rating strip',
+    ReviewsStyleId.reviewDashboard: 'Dashboard with rating breakdown',
+    ReviewsStyleId.floatingRatingHeader: 'Floating rating header strip',
+    ReviewsStyleId.featuredRatingHero: 'Featured rating hero block',
+    ReviewsStyleId.ratingSidebar: 'Rating summary with sidebar layout',
+    ReviewsStyleId.editorialTimelineReviews: 'Editorial timeline review list',
   };
 
   static String? forSection(String sectionId, String styleId) {

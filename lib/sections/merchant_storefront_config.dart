@@ -1,4 +1,8 @@
+import 'package:flutter/material.dart';
+
 import '../design_system/merchant_design_config.dart';
+import 'product_detail/config.dart';
+import 'product_detail/product_detail_renderer.dart';
 import 'storefront_layout_engine.dart';
 import 'storefront_section_entry.dart';
 
@@ -13,6 +17,19 @@ class MerchantStorefrontConfig {
 
   List<StorefrontSectionEntry> get visibleSections =>
       StorefrontLayoutEngine.resolve(sections);
+
+  /// Product detail uses this store's [design] — palette and typography are not
+  /// duplicated in the product detail customize payload.
+  ProductDetailRenderer productDetailRenderer(
+    ProductDetailLayoutConfig layout, {
+    ScrollPhysics? physics,
+  }) {
+    return ProductDetailRenderer.fromStoreCustomize(
+      storeDesign: design,
+      productLayout: layout,
+      physics: physics,
+    );
+  }
 
   factory MerchantStorefrontConfig.fromJson(Map<String, dynamic> json) {
     final designSource = json['design'] is Map<String, dynamic>

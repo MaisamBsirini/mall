@@ -65,7 +65,7 @@ abstract final class ProductDetailLayoutPresets {
           ),
           ProductDetailSectionEntry.layout(
             id: ProductDetailSectionId.reviews,
-            style: ReviewsStyleId.ratingSummary,
+            style: ReviewsStyleId.reviewDashboard,
             enabled: false,
             order: 4,
           ),
@@ -91,7 +91,7 @@ abstract final class ProductDetailLayoutPresets {
           ),
           ProductDetailSectionEntry.layout(
             id: ProductDetailSectionId.reviews,
-            style: ReviewsStyleId.compactReviewsList,
+            style: ReviewsStyleId.floatingRatingHeader,
             enabled: false,
             order: 4,
           ),
@@ -117,7 +117,7 @@ abstract final class ProductDetailLayoutPresets {
           ),
           ProductDetailSectionEntry.layout(
             id: ProductDetailSectionId.reviews,
-            style: ReviewsStyleId.featuredReviewCard,
+            style: ReviewsStyleId.featuredRatingHero,
             enabled: true,
             order: 4,
           ),
@@ -143,7 +143,7 @@ abstract final class ProductDetailLayoutPresets {
           ),
           ProductDetailSectionEntry.layout(
             id: ProductDetailSectionId.reviews,
-            style: ReviewsStyleId.reviewTimeline,
+            style: ReviewsStyleId.editorialTimelineReviews,
             enabled: true,
             order: 4,
           ),
@@ -169,7 +169,7 @@ abstract final class ProductDetailLayoutPresets {
           ),
           ProductDetailSectionEntry.layout(
             id: ProductDetailSectionId.reviews,
-            style: ReviewsStyleId.minimalRatingStrip,
+            style: ReviewsStyleId.floatingRatingHeader,
             enabled: true,
             order: 4,
           ),
@@ -195,7 +195,7 @@ abstract final class ProductDetailLayoutPresets {
           ),
           ProductDetailSectionEntry.layout(
             id: ProductDetailSectionId.reviews,
-            style: ReviewsStyleId.ratingSummary,
+            style: ReviewsStyleId.reviewDashboard,
             enabled: true,
             order: 4,
           ),
@@ -225,7 +225,7 @@ abstract final class ProductDetailLayoutPresets {
     ),
     ProductDetailSectionEntry.layout(
       id: ProductDetailSectionId.reviews,
-      style: ReviewsStyleId.ratingSummary,
+      style: ReviewsStyleId.reviewDashboard,
       enabled: true,
       order: 4,
     ),
@@ -246,7 +246,7 @@ abstract final class ProductDetailLayoutPresets {
     ),
     ProductDetailSectionEntry.layout(
       id: ProductDetailSectionId.reviews,
-      style: ReviewsStyleId.compactReviewsList,
+      style: ReviewsStyleId.floatingRatingHeader,
       enabled: true,
       order: 3,
     ),
@@ -279,7 +279,7 @@ abstract final class ProductDetailLayoutPresets {
     ),
     ProductDetailSectionEntry.layout(
       id: ProductDetailSectionId.reviews,
-      style: ReviewsStyleId.featuredReviewCard,
+      style: ReviewsStyleId.featuredRatingHero,
       enabled: true,
       order: 4,
     ),
@@ -288,7 +288,7 @@ abstract final class ProductDetailLayoutPresets {
   static final _example4 = [
     ProductDetailSectionEntry.layout(
       id: ProductDetailSectionId.reviews,
-      style: ReviewsStyleId.reviewTimeline,
+      style: ReviewsStyleId.editorialTimelineReviews,
       enabled: true,
       order: 1,
     ),

@@ -16,13 +16,13 @@ class TeamDirectoryStyle extends StatelessWidget {
   Widget build(BuildContext context) {
     final items = StaffTokens.resolveItems(data?.items);
     final palette = context.ds.palette;
-    final imageSize = AppSizes.w(context, 0.22);
+    final imageSize = AppSizes.w(context, 0.15);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         StaffTokens.sectionTitle(context, title: data?.title),
-        SizedBox(height: StaffTokens.gapMd(context)),
+        SizedBox(height: StaffTokens.gapSm(context)),
         Padding(
           padding: EdgeInsets.symmetric(
             horizontal: StaffTokens.horizontalMargin(context),
@@ -33,7 +33,7 @@ class TeamDirectoryStyle extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(
                     bottom: index < items.length - 1
-                        ? StaffTokens.gapMd(context)
+                        ? StaffTokens.gapSm(context)
                         : 0,
                   ),
                   child: _DirectoryCard(
@@ -64,7 +64,7 @@ class _DirectoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(StaffTokens.gapMd(context)),
+      padding: EdgeInsets.all(StaffTokens.gapSm(context)),
       decoration: BoxDecoration(
         color: StaffTokens.surface(context),
         borderRadius: StaffTokens.borderMd(context),
@@ -80,7 +80,7 @@ class _DirectoryCard extends StatelessWidget {
             height: imageSize,
             borderRadius: StaffTokens.borderMd(context),
           ),
-          SizedBox(width: StaffTokens.gapMd(context)),
+          SizedBox(width: StaffTokens.gapSm(context)),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -89,8 +89,8 @@ class _DirectoryCard extends StatelessWidget {
                 SizedBox(height: StaffTokens.gapXs(context)),
                 StaffTokens.memberRolePlaceholder(context),
                 if (member.shortBio != null) ...[
-                  SizedBox(height: StaffTokens.gapSm(context)),
-                  StaffTokens.memberBioPlaceholder(context, lines: 2),
+                  SizedBox(height: StaffTokens.gapXs(context)),
+                  StaffTokens.memberBioPlaceholder(context, lines: 1),
                 ],
               ],
             ),

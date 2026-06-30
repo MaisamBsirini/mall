@@ -1,29 +1,35 @@
 import 'package:flutter/material.dart';
 
+import '../../design_system/merchant_design_config.dart';
 import 'config.dart';
-import 'layout_engine.dart';
+import 'product_detail_renderer.dart';
 
-/// Product detail screen — delegates entirely to the layout engine.
+/// Product detail screen — design from store customize, layout from product detail customize.
 class ProductDetailScreen extends StatelessWidget {
-  final List<ProductDetailSectionEntry> sections;
+  final MerchantDesignConfig design;
+  final ProductDetailLayoutConfig layout;
   final ScrollPhysics? physics;
 
   const ProductDetailScreen({
     super.key,
-    required this.sections,
+    required this.design,
+    required this.layout,
     this.physics,
   });
 
-  ProductDetailScreen.fromConfig({
+  ProductDetailScreen.fromStoreCustomize({
     super.key,
-    required ProductDetailLayoutConfig config,
+    required MerchantDesignConfig storeDesign,
+    required ProductDetailLayoutConfig productLayout,
     this.physics,
-  }) : sections = config.sections;
+  })  : design = storeDesign,
+        layout = productLayout;
 
   @override
   Widget build(BuildContext context) {
-    return ProductDetailLayoutEngine(
-      sections: sections,
+    return ProductDetailRenderer(
+      design: design,
+      layout: layout,
       physics: physics,
     );
   }

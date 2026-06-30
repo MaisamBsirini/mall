@@ -1,75 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../core/constants/app_sizes.dart';
 import '../../design_system/scope/design_system_scope.dart';
-import 'offer_item.dart';
-import 'offers_section_data.dart';
 
 class OffersTokens {
   OffersTokens._();
 
-  static const List<OfferItem> mockItems = [
-    OfferItem(
-      id: 'offer_1',
-      productName: 'All Orders',
-      image: 'product.jpg',
-      discountPercentage: 20,
-    ),
-    OfferItem(
-      id: 'offer_2',
-      productName: 'New Users',
-      image: 'product_2.jpg',
-      discountPercentage: 15,
-    ),
-    OfferItem(
-      id: 'offer_3',
-      productName: 'Weekend Sale',
-      image: 'product_3.jpg',
-      discountPercentage: 30,
-    ),
-    OfferItem(
-      id: 'offer_4',
-      productName: 'VIP Members',
-      image: 'product_4.jpg',
-      discountPercentage: 25,
-    ),
-  ];
-
-  static const _urgencyLabels = [
-    'Today Only',
-    '3 Days Left',
-    'Today Only',
-    'Limited',
-  ];
-
-  static const _badgeColors = [
-    Color(0xFF7BC47F),
-    Color(0xFFF5A962),
-    Color(0xFF9B8EC4),
-    Color(0xFFE879A9),
-  ];
-
-  static const _gridIconColors = [
-    Color(0xFF5B8DEF),
-    Color(0xFFE879A9),
-    Color(0xFF7BC47F),
-    Color(0xFFF5A962),
-  ];
-
-  static List<OfferItem> resolveItems(OffersSectionData? data) {
-    if (data != null && data.items.isNotEmpty) return data.items;
-    return mockItems;
-  }
-
-  static String discountOff(int percentage) => '$percentage% OFF';
-
-  static String urgencyFor(int index) =>
-      _urgencyLabels[index % _urgencyLabels.length];
-
-  static Color badgeColorFor(int index) =>
-      _badgeColors[index % _badgeColors.length];
-
-  static Color gridIconColorFor(int index) =>
-      _gridIconColors[index % _gridIconColors.length];
+  static const int showcaseCount = 4;
 
   static EdgeInsets sectionPadding(BuildContext context) =>
       context.ds.tokens.sectionPadding(context);
@@ -86,137 +23,115 @@ class OffersTokens {
   static BorderRadius borderMd(BuildContext context) =>
       context.ds.tokens.borderMd;
 
-  static BorderRadius borderLg(BuildContext context) =>
-      context.ds.tokens.borderLg;
-
-  static Widget sectionTitle(BuildContext context, {String title = 'Offers'}) {
+  static Widget sectionTitle(BuildContext context) {
     return Padding(
       padding: sectionPadding(context),
-      child: Text(
-        title,
-        style: context.ds.typography.title(context).copyWith(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-            ),
-      ),
+      child: textLine(context, widthFactor: 0.22, heightFactor: 0.009),
     );
   }
 
-  static Widget thumbImage(
+  static Widget textLine(
+    BuildContext context, {
+    double widthFactor = 0.28,
+    double heightFactor = 0.008,
+  }) {
+    return context.ds.placeholders.textLine(
+      context,
+      widthFactor: widthFactor,
+      heightFactor: heightFactor,
+    );
+  }
+
+  static Widget thumbBlock(
     BuildContext context, {
     required double size,
     BorderRadius? borderRadius,
   }) {
-    return context.ds.placeholders.imagePlaceholder(
+    return context.ds.placeholders.shimmerBox(
       width: size,
       height: size,
       borderRadius: borderRadius ?? borderMd(context),
     );
   }
 
-  static TextStyle discountStyle(BuildContext context) {
-    return context.ds.typography.caption(context).copyWith(
-          fontWeight: FontWeight.w800,
-          fontSize: 13,
-        );
-  }
+  static const double surfaceBorderWidth = 0.5;
 
-  static TextStyle subtitleStyle(BuildContext context) {
-    return context.ds.typography.caption(context).copyWith(
-          color: context.ds.palette.textSecondary,
-          fontSize: 11,
-        );
-  }
-
-  static Widget percentCircle(
+  static Widget offerSurface(
     BuildContext context, {
-    required int index,
-    required double size,
+    required Widget child,
+    EdgeInsets? padding,
   }) {
-    final color = badgeColorFor(index).withValues(alpha: 0.18);
+    final palette = context.ds.palette;
 
     return Container(
-      width: size,
-      height: size,
+      padding: padding ?? EdgeInsets.all(gapSm(context)),
       decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: color,
+        color: palette.surface,
+        borderRadius: borderMd(context),
+        border: Border.all(
+          color: palette.border.withValues(alpha: 0.4),
+          width: surfaceBorderWidth,
+        ),
       ),
-      child: Icon(
-        Icons.percent_rounded,
-        size: size * 0.42,
-        color: badgeColorFor(index),
-      ),
+      child: child,
     );
   }
 
-  static Widget leftBadge(
+  static Widget discountPlaceholder(BuildContext context) {
+    return textLine(context, widthFactor: 0.14, heightFactor: 0.008);
+  }
+
+  static Widget subtitlePlaceholder(BuildContext context) {
+    return textLine(context, widthFactor: 0.20, heightFactor: 0.006);
+  }
+
+  static Widget badgeBlock(
     BuildContext context, {
-    required int percentage,
-    required Color color,
     required double width,
     required double height,
   }) {
+    final palette = context.ds.palette;
+
     return Container(
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.22),
+        color: palette.placeholderLight.withValues(alpha: 0.35),
         borderRadius: borderSm(context),
       ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            '$percentage%',
-            style: context.ds.typography.caption(context).copyWith(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 13,
-                  color: color.withValues(alpha: 0.95),
-                  height: 1,
-                ),
-          ),
-          Text(
-            'OFF',
-            style: context.ds.typography.caption(context).copyWith(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 9,
-                  color: color.withValues(alpha: 0.85),
-                  letterSpacing: 0.5,
-                ),
-          ),
-        ],
+      child: Center(
+        child: textLine(context, widthFactor: 0.08, heightFactor: 0.007),
       ),
     );
   }
 
-  static Widget gridIconCircle(
-    BuildContext context, {
-    required int index,
-    required double size,
-  }) {
-    final color = gridIconColorFor(index);
-
-    return Container(
+  static Widget circleBlock(BuildContext context, {required double size}) {
+    return context.ds.placeholders.shimmerBox(
       width: size,
       height: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: color.withValues(alpha: 0.15),
-      ),
-      child: Icon(
-        Icons.local_offer_outlined,
-        size: size * 0.46,
-        color: color,
-      ),
+      shape: BoxShape.circle,
     );
   }
 
-  static Widget chevron(BuildContext context) {
-    return Icon(
-      Icons.chevron_right_rounded,
-      size: 20,
-      color: context.ds.palette.textSecondary.withValues(alpha: 0.45),
-    );
+  static double compactCardHeight(
+    BuildContext context, {
+    required double imageSize,
+  }) {
+    final surfacePad = gapSm(context);
+    final linePrimary = AppSizes.h(context, 0.008);
+    final lineSecondary = AppSizes.h(context, 0.006);
+    final innerGaps = gapXs(context) + gapXs(context) * 0.5;
+    final border = surfaceBorderWidth * 2;
+
+    return border +
+        surfacePad * 2 +
+        imageSize +
+        innerGaps +
+        linePrimary +
+        lineSecondary;
+  }
+
+  static Widget chevronPlaceholder(BuildContext context) {
+    return textLine(context, widthFactor: 0.03, heightFactor: 0.012);
   }
 }

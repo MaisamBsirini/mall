@@ -81,7 +81,10 @@ class ProductDetailSectionEntry {
       };
 }
 
-/// Full product detail layout configuration — customize payload only.
+/// Full product detail layout configuration — customize payload only (sections).
+///
+/// [palette] and [typography] are **not** included here. They come from the
+/// storefront customize response ([MerchantStorefrontConfig.design]).
 class ProductDetailLayoutConfig {
   final List<ProductDetailSectionEntry> sections;
 
@@ -126,7 +129,7 @@ class ProductDetailLayoutConfig {
       ),
       ProductDetailSectionEntry.layout(
         id: 'reviews',
-        style: 'rating_summary',
+        style: 'review_dashboard',
         order: 4,
       ),
     ],

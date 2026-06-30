@@ -6,8 +6,7 @@ import '../../design_system/scope/design_system_scope.dart';
 class LocationTokens {
   LocationTokens._();
 
-  static double horizontalMargin(BuildContext context) =>
-      context.ds.tokens.horizontalMargin(context);
+  static double bannerHeight(BuildContext context) => AppSizes.h(context, 0.12);
 
   static EdgeInsets sectionPadding(BuildContext context) =>
       context.ds.tokens.sectionPadding(context);
@@ -17,9 +16,6 @@ class LocationTokens {
 
   static double gapSm(BuildContext context) =>
       context.ds.tokens.gapSm(context);
-
-  static double gapMd(BuildContext context) =>
-      context.ds.tokens.gapMd(context);
 
   static BorderRadius borderSm(BuildContext context) =>
       context.ds.tokens.borderSm;
@@ -51,36 +47,18 @@ class LocationTokens {
     );
   }
 
-  static Widget pinIcon(
-    BuildContext context, {
-    double size = 14,
-    Color? color,
-  }) {
-    return Icon(
-      Icons.location_on_rounded,
-      size: size,
-      color: color ?? context.ds.palette.primary.withOpacity(0.75),
+  static Widget pinDot(BuildContext context, {double size = 10}) {
+    return context.ds.placeholders.shimmerBox(
+      width: size,
+      height: size,
+      shape: BoxShape.circle,
     );
   }
 
-  static Widget locationText(
-    BuildContext context, {
-    double widthFactor = 0.18,
-  }) {
-    return textLine(context, widthFactor: widthFactor, heightFactor: 0.007);
-  }
-
-  static Widget locationDetailText(
-    BuildContext context, {
-    double widthFactor = 0.28,
-  }) {
-    return textLine(context, widthFactor: widthFactor, heightFactor: 0.006);
-  }
-
-  /// Minimal banner strip for component demos — not a full banner section.
-  static Widget mockBannerStrip(BuildContext context) {
+  /// Minimal banner for overlay component previews.
+  static Widget mockBanner(BuildContext context) {
     final palette = context.ds.palette;
-    final height = AppSizes.h(context, 0.14);
+    final height = bannerHeight(context);
 
     return ClipRRect(
       borderRadius: borderMd(context),
@@ -102,7 +80,7 @@ class LocationTokens {
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    palette.overlayDark.withOpacity(0.45),
+                    palette.overlayDark.withValues(alpha: 0.35),
                   ],
                 ),
               ),
@@ -113,48 +91,73 @@ class LocationTokens {
     );
   }
 
-  /// Minimal content hint below a floating component.
-  static Widget mockContentStrip(BuildContext context) {
-    return Row(
-      children: List.generate(3, (index) {
-        return Expanded(
-          child: Padding(
-            padding: EdgeInsets.only(
-              right: index < 2 ? gapSm(context) : 0,
+  /// Banner + small overlay widget — store owner picks style + anchor.
+  static Widget bannerWithOverlay(
+    BuildContext context, {
+    required Widget overlay,
+    Alignment alignment = Alignment.topRight,
+    EdgeInsets overlayPadding = const EdgeInsets.all(8),
+  }) {
+    return Padding(
+      padding: sectionPadding(context),
+      child: SizedBox(
+        height: bannerHeight(context),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Positioned.fill(child: mockBanner(context)),
+            Positioned.fill(
+              child: Padding(
+                padding: overlayPadding,
+                child: Align(alignment: alignment, child: overlay),
+              ),
             ),
-            child: context.ds.placeholders.shimmerBox(
-              height: AppSizes.h(context, 0.06),
-              borderRadius: borderSm(context),
-            ),
-          ),
-        );
-      }),
+          ],
+        ),
+      ),
     );
   }
 
-  static Widget overlayCard(BuildContext context) {
+  static Widget glassChip(
+    BuildContext context, {
+    required Widget child,
+    EdgeInsets? padding,
+  }) {
     final palette = context.ds.palette;
 
     return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: AppSizes.w(context, 0.04),
-        vertical: AppSizes.h(context, 0.012),
-      ),
+      padding: padding ??
+          EdgeInsets.symmetric(
+            horizontal: AppSizes.w(context, 0.028),
+            vertical: AppSizes.h(context, 0.007),
+          ),
       decoration: BoxDecoration(
+        color: palette.glassFill,
+        borderRadius: BorderRadius.circular(999),
+        border: Border.all(color: palette.glassBorder),
+        boxShadow: cardShadow(context),
+      ),
+      child: child,
+    );
+  }
+
+  static Widget fabCircle(
+    BuildContext context, {
+    required double size,
+    required Widget child,
+  }) {
+    final palette = context.ds.palette;
+
+    return Container(
+      width: size,
+      height: size,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
         color: surface(context),
-        borderRadius: borderMd(context),
-        border: Border.all(color: palette.border),
+        border: Border.all(color: palette.border.withValues(alpha: 0.5)),
         boxShadow: elevatedShadow(context),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          locationText(context, widthFactor: 0.22),
-          SizedBox(height: gapXs(context)),
-          locationDetailText(context, widthFactor: 0.32),
-        ],
-      ),
+      child: Center(child: child),
     );
   }
 }

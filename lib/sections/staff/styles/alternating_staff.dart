@@ -14,14 +14,14 @@ class AlternatingStaffStyle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = StaffTokens.resolveItems(data?.items);
-    final imageWidth = AppSizes.w(context, 0.34);
-    final imageHeight = AppSizes.h(context, 0.22);
+    final imageWidth = AppSizes.w(context, 0.26);
+    final imageHeight = AppSizes.h(context, 0.13);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         StaffTokens.sectionTitle(context, title: data?.title),
-        SizedBox(height: StaffTokens.gapLg(context)),
+        SizedBox(height: StaffTokens.gapMd(context)),
         Padding(
           padding: EdgeInsets.symmetric(
             horizontal: StaffTokens.horizontalMargin(context),
@@ -32,7 +32,7 @@ class AlternatingStaffStyle extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(
                     bottom: index < items.length - 1
-                        ? StaffTokens.gapLg(context) * 1.2
+                        ? StaffTokens.gapMd(context)
                         : 0,
                   ),
                   child: _AlternatingRow(
@@ -104,8 +104,8 @@ class _MemberTextBlock extends StatelessWidget {
         SizedBox(height: StaffTokens.gapSm(context)),
         StaffTokens.memberRolePlaceholder(context),
         if (member.shortBio != null) ...[
-          SizedBox(height: StaffTokens.gapMd(context)),
-          StaffTokens.memberBioPlaceholder(context, lines: 2),
+          SizedBox(height: StaffTokens.gapSm(context)),
+          StaffTokens.memberBioPlaceholder(context, lines: 1),
         ],
       ],
     );

@@ -88,14 +88,14 @@ Every storefront section uses the same envelope. No other fields are allowed.
 
 ## Product Detail Customize API
 
-Separate endpoint for product page **layout only**. Same root shape and same section envelope as the storefront customize API.
+Separate endpoint for product page **layout only** — `sections` array with no `palette` or `typography`.
+
+`palette` and `typography` come from the **storefront customize** response (`storefront_customize_example.json`). The client applies that same store design to product detail via `ProductDetailRenderer` / `MerchantStorefrontConfig.productDetailRenderer`.
 
 Product content (images, title, price, variants, review text) is **never** included here. It will be delivered by dedicated product content APIs.
 
 ```json
 {
-  "palette": "luxury_dark",
-  "typography": "elegant_serif",
   "sections": [
     {
       "id": "media",
@@ -137,7 +137,7 @@ Legacy `sectionId` / `styleId` keys are not part of this contract. Use `id` and 
 5. Sort by `order` ascending.
 6. No banner pin — product detail has no special ordering exceptions.
 
-`palette` and `typography` typically match the store-level customize response.
+`palette` and `typography` are **not** part of this payload — they are read from the storefront customize JSON and shared with product detail at render time.
 
 ### Section entry examples
 
@@ -185,7 +185,7 @@ Legacy `sectionId` / `styleId` keys are not part of this contract. Use `id` and 
   "name": "Reviews",
   "enabled": true,
   "order": 4,
-  "style": "rating_summary"
+  "style": "review_dashboard"
 }
 ```
 
@@ -234,7 +234,7 @@ Invalid palette or typography ids should be rejected at the API layer. The admin
 |---|---|
 | **Section id** | `booking` |
 | **Purpose** | Appointment booking entry — visual entry point to the booking flow |
-| **Styles** | `stacked_step_cards` · `compact_chip_flow` · `timeline_rail_flow` · `split_schedule_flow` · `scroll_wizard_flow` |
+| **Styles** | `stacked_step_cards` · `compact_chip_flow` · `timeline_rail_flow` · `accordion_step_flow` · `popup_staff_picker_flow` |
 
 **Supported configuration:** `enabled`, `order`, `style`.
 
@@ -325,13 +325,14 @@ Invalid palette or typography ids should be rejected at the API layer. The admin
 | | |
 |---|---|
 | **Section id** | `location` |
-| **Purpose** | Location text display layout |
+| **Purpose** | Location overlay on banner — small anchor component |
 | **Styles** | `corner_location_badge` · `floating_location_pill` · `location_bubble` · `location_ribbon` · `header_location_chip` |
 
 **Supported configuration:** `enabled`, `order`, `style`.
 
 **Notes:**
-- Location text and detail lines are content API fields.
+- Store owner picks style and anchor position; component renders as a soft overlay on the banner area.
+- Location text is a content API field at runtime.
 
 ---
 
@@ -341,7 +342,7 @@ Invalid palette or typography ids should be rejected at the API layer. The admin
 |---|---|
 | **Section id** | `social_media` |
 | **Purpose** | Social profile links layout |
-| **Styles** | `minimal_social_chips` · `floating_icon_grid` · `compact_profile_strip` · `elegant_card_stack` · `bottom_social_dock` |
+| **Styles** | `minimal_social_chips` · `floating_icon_grid` · `compact_profile_strip` |
 
 **Supported configuration:** `enabled`, `order`, `style`.
 
@@ -356,7 +357,7 @@ Invalid palette or typography ids should be rejected at the API layer. The admin
 |---|---|
 | **Section id** | `certifications` |
 | **Purpose** | Trust credentials / certificate gallery layout |
-| **Styles** | `certificate_wall` · `achievement_gallery` · `awards_showcase` · `masonry_achievements` · `premium_carousel` |
+| **Styles** | `certificate_wall` · `achievement_gallery` · `premium_carousel` · `credential_strip` |
 
 **Supported configuration:** `enabled`, `order`, `style`.
 
@@ -421,14 +422,14 @@ Invalid palette or typography ids should be rejected at the API layer. The admin
 | | |
 |---|---|
 | **Section id** | `reviews` |
-| **Purpose** | Product-level reviews block layout |
-| **Styles** | `rating_summary` · `compact_reviews_list` · `featured_review_card` · `review_timeline` · `minimal_rating_strip` |
+| **Purpose** | Product-level reviews block — **same UI styles as storefront `reviews`** |
+| **Styles** | `review_dashboard` · `floating_rating_header` · `featured_rating_hero` · `rating_sidebar` · `editorial_timeline_reviews` |
 
 **Supported configuration:** `id`, `name`, `enabled`, `order`, `style`.
 
 **Notes:**
 - Review text, ratings, and reviewer names are product content API fields.
-- Style ids differ from storefront `reviews` section styles.
+- Style ids are shared with the storefront `reviews` section — customize picks layout only.
 
 ---
 

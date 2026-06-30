@@ -17,14 +17,6 @@ abstract final class LocationSectionRegistry {
   );
 
   static Widget _buildStyle(String styleId) => LocationRenderer(
-        config: LocationComponentConfig(
-          style: styleId,
-          previewExpanded: usesOverlayPreview(styleId),
-        ),
+        config: LocationComponentConfig(style: styleId),
       );
-
-  static bool usesOverlayPreview(String styleId) {
-    return styleId == LocationStyleId.floatingLocationPill ||
-        styleId == LocationStyleId.locationBubble;
-  }
 }

@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../../design_system/scope/design_system_scope.dart';
 import 'booking_section_config.dart';
 import 'styles.dart';
+import 'styles/accordion_step_flow.dart';
 import 'styles/compact_chip_flow.dart';
-import 'styles/scroll_wizard_flow.dart';
-import 'styles/split_schedule_flow.dart';
+import 'styles/popup_staff_picker_flow.dart';
 import 'styles/stacked_step_cards.dart';
 import 'styles/timeline_rail_flow.dart';
 
@@ -45,10 +45,10 @@ class BookingRenderer extends StatelessWidget {
         return const CompactChipFlowStyle();
       case BookingStyleId.timelineRailFlow:
         return const TimelineRailFlowStyle();
-      case BookingStyleId.splitScheduleFlow:
-        return const SplitScheduleFlowStyle();
-      case BookingStyleId.scrollWizardFlow:
-        return const ScrollWizardFlowStyle();
+      case BookingStyleId.accordionStepFlow:
+        return const AccordionStepFlowStyle();
+      case BookingStyleId.popupStaffPickerFlow:
+        return const PopupStaffPickerFlowStyle();
       default:
         return const _UnknownBookingStyle();
     }

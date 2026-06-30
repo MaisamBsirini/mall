@@ -20,21 +20,17 @@ class LocationRenderer extends StatelessWidget {
   LocationRenderer.fromStyleId({
     super.key,
     required String styleId,
-    bool previewExpanded = false,
-  }) : config = LocationComponentConfig(
-          style: styleId,
-          previewExpanded: previewExpanded,
-        );
+  }) : config = LocationComponentConfig(style: styleId);
 
   @override
   Widget build(BuildContext context) {
     switch (config.style) {
       case LocationStyleId.cornerLocationBadge:
-        return CornerLocationBadge(previewExpanded: config.previewExpanded);
+        return const CornerLocationBadge();
       case LocationStyleId.floatingLocationPill:
-        return FloatingLocationPill(previewExpanded: config.previewExpanded);
+        return const FloatingLocationPill();
       case LocationStyleId.locationBubble:
-        return LocationBubble(previewExpanded: config.previewExpanded);
+        return const LocationBubble();
       case LocationStyleId.locationRibbon:
         return const LocationRibbon();
       case LocationStyleId.headerLocationChip:

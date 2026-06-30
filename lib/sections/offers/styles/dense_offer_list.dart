@@ -5,7 +5,7 @@ import '../../../design_system/scope/design_system_scope.dart';
 import '../offers_section_data.dart';
 import '../offers_tokens.dart';
 
-/// Style 2 — minimal list with % circle, title/subtitle, chevron.
+/// Style 2 — compact list rows with circle + line placeholders.
 class DenseOfferListStyle extends StatelessWidget {
   final OffersSectionData? data;
 
@@ -14,11 +14,10 @@ class DenseOfferListStyle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final palette = context.ds.palette;
-    final items = OffersTokens.resolveItems(data);
     const visibleCount = 3;
-    final iconSize = AppSizes.w(context, 0.10);
-    final rowHeight = AppSizes.h(context, 0.058);
-    final listHeight = rowHeight * visibleCount.clamp(1, items.length);
+    final iconSize = AppSizes.w(context, 0.09);
+    final rowHeight = AppSizes.h(context, 0.052);
+    final listHeight = rowHeight * visibleCount;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,43 +38,30 @@ class DenseOfferListStyle extends StatelessWidget {
               height: listHeight,
               child: ListView.separated(
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: visibleCount.clamp(0, items.length),
+                itemCount: visibleCount,
                 separatorBuilder: (_, __) => Divider(
                   height: 1,
                   color: palette.border.withValues(alpha: 0.35),
                 ),
                 itemBuilder: (context, index) {
-                  final item = items[index];
-
                   return SizedBox(
                     height: rowHeight,
                     child: Row(
                       children: [
-                        OffersTokens.percentCircle(
-                          context,
-                          index: index,
-                          size: iconSize,
-                        ),
+                        OffersTokens.circleBlock(context, size: iconSize),
                         SizedBox(width: OffersTokens.gapSm(context)),
                         Expanded(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                OffersTokens.discountOff(item.discountPercentage),
-                                style: OffersTokens.discountStyle(context),
-                              ),
-                              Text(
-                                '${item.productName} · ${OffersTokens.urgencyFor(index)}',
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: OffersTokens.subtitleStyle(context),
-                              ),
+                              OffersTokens.discountPlaceholder(context),
+                              SizedBox(height: OffersTokens.gapXs(context) * 0.5),
+                              OffersTokens.subtitlePlaceholder(context),
                             ],
                           ),
                         ),
-                        OffersTokens.chevron(context),
+                        OffersTokens.chevronPlaceholder(context),
                       ],
                     ),
                   );

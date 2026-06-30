@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/constants/app_sizes.dart';
-import '../../../design_system/scope/design_system_scope.dart';
 import '../offers_section_data.dart';
 import '../offers_tokens.dart';
 
-/// Style 1 — image on top, discount + subtitle below, horizontal scroll.
+/// Style 1 — horizontal cards with image + line placeholders.
 class CompactHorizontalOfferStyle extends StatelessWidget {
   final OffersSectionData? data;
 
@@ -13,11 +12,13 @@ class CompactHorizontalOfferStyle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final palette = context.ds.palette;
-    final items = OffersTokens.resolveItems(data);
     final cardWidth = AppSizes.w(context, 0.30);
-    final imageSize = cardWidth - AppSizes.w(context, 0.024);
-    final cardHeight = imageSize + AppSizes.h(context, 0.048);
+    final surfacePad = OffersTokens.gapSm(context);
+    final imageSize = cardWidth - surfacePad * 2;
+    final cardHeight =
+        OffersTokens.compactCardHeight(context, imageSize: imageSize);
+    final linePrimary = AppSizes.h(context, 0.008);
+    final lineSecondary = AppSizes.h(context, 0.006);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,35 +31,38 @@ class CompactHorizontalOfferStyle extends StatelessWidget {
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             padding: OffersTokens.sectionPadding(context),
-            itemCount: items.length,
+            itemCount: OffersTokens.showcaseCount,
             separatorBuilder: (_, __) =>
                 SizedBox(width: OffersTokens.gapSm(context)),
             itemBuilder: (context, index) {
-              final item = items[index];
-
-              return Container(
+              return SizedBox(
                 width: cardWidth,
-                padding: EdgeInsets.all(AppSizes.w(context, 0.012)),
-                decoration: BoxDecoration(
-                  color: palette.surface,
-                  borderRadius: OffersTokens.borderMd(context),
-                  border: Border.all(color: palette.border.withValues(alpha: 0.45)),
-                ),
-                child: Column(
-                  children: [
-                    OffersTokens.thumbImage(context, size: imageSize),
-                    SizedBox(height: OffersTokens.gapXs(context)),
-                    Text(
-                      OffersTokens.discountOff(item.discountPercentage),
-                      style: OffersTokens.discountStyle(context),
-                    ),
-                    Text(
-                      item.productName,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: OffersTokens.subtitleStyle(context),
-                    ),
-                  ],
+                height: cardHeight,
+                child: OffersTokens.offerSurface(
+                  context,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      OffersTokens.thumbBlock(context, size: imageSize),
+                      SizedBox(height: OffersTokens.gapXs(context)),
+                      SizedBox(
+                        height: linePrimary,
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: OffersTokens.discountPlaceholder(context),
+                        ),
+                      ),
+                      SizedBox(height: OffersTokens.gapXs(context) * 0.5),
+                      SizedBox(
+                        height: lineSecondary,
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: OffersTokens.subtitlePlaceholder(context),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },

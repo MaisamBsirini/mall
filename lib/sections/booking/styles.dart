@@ -5,15 +5,15 @@ class BookingStyleId {
   static const String stackedStepCards = 'stacked_step_cards';
   static const String compactChipFlow = 'compact_chip_flow';
   static const String timelineRailFlow = 'timeline_rail_flow';
-  static const String splitScheduleFlow = 'split_schedule_flow';
-  static const String scrollWizardFlow = 'scroll_wizard_flow';
+  static const String accordionStepFlow = 'accordion_step_flow';
+  static const String popupStaffPickerFlow = 'popup_staff_picker_flow';
 
   static const List<String> all = [
     stackedStepCards,
     compactChipFlow,
     timelineRailFlow,
-    splitScheduleFlow,
-    scrollWizardFlow,
+    accordionStepFlow,
+    popupStaffPickerFlow,
   ];
 
   static bool isValid(String styleId) => all.contains(styleId);

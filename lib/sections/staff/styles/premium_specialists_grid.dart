@@ -21,7 +21,7 @@ class PremiumSpecialistsGridStyle extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         StaffTokens.sectionTitle(context, title: data?.title),
-        SizedBox(height: StaffTokens.gapLg(context)),
+        SizedBox(height: StaffTokens.gapMd(context)),
         Padding(
           padding: EdgeInsets.symmetric(
             horizontal: StaffTokens.horizontalMargin(context),
@@ -31,9 +31,9 @@ class PremiumSpecialistsGridStyle extends StatelessWidget {
             physics: const NeverScrollableScrollPhysics(),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: crossAxisCount,
-              mainAxisSpacing: StaffTokens.gapLg(context),
-              crossAxisSpacing: StaffTokens.gapMd(context),
-              childAspectRatio: 0.68,
+              mainAxisSpacing: StaffTokens.gapSm(context),
+              crossAxisSpacing: StaffTokens.gapSm(context),
+              childAspectRatio: 0.95,
             ),
             itemCount: items.length,
             itemBuilder: (context, index) {
@@ -66,7 +66,7 @@ class _SpecialistCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Expanded(
-            flex: 5,
+            flex: 4,
             child: ClipRRect(
               borderRadius: BorderRadius.vertical(
                 top: Radius.circular(context.ds.tokens.radiusLg),
@@ -81,9 +81,9 @@ class _SpecialistCard extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 4,
+            flex: 3,
             child: Padding(
-              padding: EdgeInsets.all(AppSizes.w(context, 0.04)),
+              padding: EdgeInsets.all(AppSizes.w(context, 0.028)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -91,12 +91,10 @@ class _SpecialistCard extends StatelessWidget {
                   SizedBox(height: StaffTokens.gapXs(context)),
                   StaffTokens.memberRolePlaceholder(context),
                   if (member.shortBio != null) ...[
-                    SizedBox(height: StaffTokens.gapSm(context)),
-                    Expanded(
-                      child: StaffTokens.memberBioPlaceholder(
-                        context,
-                        lines: 2,
-                      ),
+                    SizedBox(height: StaffTokens.gapXs(context)),
+                    StaffTokens.memberBioPlaceholder(
+                      context,
+                      lines: 1,
                     ),
                   ],
                 ],

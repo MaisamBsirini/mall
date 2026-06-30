@@ -1,6 +1,4 @@
 {
-  "palette": "luxury_dark",
-  "typography": "elegant_serif",
   "sections": [
     {
       "id": "media",
@@ -28,7 +26,7 @@
       "name": "Reviews",
       "enabled": true,
       "order": 4,
-      "style": "rating_summary"
+      "style": "review_dashboard"
     }
   ]
 }
